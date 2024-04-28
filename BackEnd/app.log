@@ -1,0 +1,468 @@
+2024-04-28T10:48:05.570+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 3008 (D:\Nhom19\Nhom19_TKPMHDT\BackEnd\target\classes started by ninhn in D:\Nhom19\Nhom19_TKPMHDT\BackEnd)
+2024-04-28T10:48:05.597+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T10:48:05.777+07:00  INFO 3008 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-28T10:48:05.778+07:00  INFO 3008 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-28T10:48:07.951+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T10:48:08.019+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 0 JPA repository interfaces.
+2024-04-28T10:48:08.932+07:00  WARN 3008 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T10:48:09.115+07:00  INFO 3008 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T10:48:10.218+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-28T10:48:10.247+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T10:48:10.247+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T10:48:10.463+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T10:48:10.464+07:00  INFO 3008 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4684 ms
+2024-04-28T10:48:11.008+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T10:48:11.278+07:00  INFO 3008 --- [BackEnd] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-28T10:48:11.369+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T10:48:12.024+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T10:48:12.081+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-28T10:48:13.063+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 0544d918-5043-40f9-813d-6450e6e7a49c
+2024-04-28T10:48:13.067+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-28T10:48:13.150+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T10:48:13.153+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T10:48:14.165+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T10:48:14.175+07:00  INFO 3008 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:14.451+07:00  WARN 3008 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T10:48:15.047+07:00  WARN 3008 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T10:48:15.652+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T10:48:15.765+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-28T10:48:15.790+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 12.548 seconds (process running for 16.504)
+2024-04-28T10:48:34.883+07:00  INFO 3008 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 3 deletions, 0 modifications)
+2024-04-28T10:48:35.472+07:00  INFO 3008 --- [BackEnd] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:35.494+07:00  INFO 3008 --- [BackEnd] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-28T10:48:35.529+07:00  INFO 3008 --- [BackEnd] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-28T10:48:35.866+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 3008 (D:\Nhom19\Nhom19_TKPMHDT\BackEnd\target\classes started by ninhn in D:\Nhom19\Nhom19_TKPMHDT\BackEnd)
+2024-04-28T10:48:35.867+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T10:48:36.431+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T10:48:36.434+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-04-28T10:48:36.660+07:00  WARN 3008 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T10:48:36.663+07:00  INFO 3008 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T10:48:38.097+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-28T10:48:38.098+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T10:48:38.099+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T10:48:38.232+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T10:48:38.232+07:00  INFO 3008 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2359 ms
+2024-04-28T10:48:38.389+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T10:48:38.420+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T10:48:38.446+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T10:48:38.449+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-04-28T10:48:38.509+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection ConnectionID:11 ClientConnectionId: a1084f75-fd93-44c5-a02d-3f0e30804d77
+2024-04-28T10:48:38.509+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-04-28T10:48:38.510+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T10:48:38.510+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T10:48:38.533+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T10:48:38.533+07:00  INFO 3008 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:38.685+07:00  WARN 3008 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T10:48:38.899+07:00  WARN 3008 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T10:48:39.240+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T10:48:39.277+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-28T10:48:39.287+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 3.527 seconds (process running for 40.001)
+2024-04-28T10:48:39.293+07:00  INFO 3008 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T10:48:40.672+07:00  INFO 3008 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-04-28T10:48:40.693+07:00  INFO 3008 --- [BackEnd] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:40.695+07:00  INFO 3008 --- [BackEnd] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-04-28T10:48:40.698+07:00  INFO 3008 --- [BackEnd] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-04-28T10:48:40.930+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 3008 (D:\Nhom19\Nhom19_TKPMHDT\BackEnd\target\classes started by ninhn in D:\Nhom19\Nhom19_TKPMHDT\BackEnd)
+2024-04-28T10:48:40.931+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T10:48:41.514+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T10:48:41.516+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-04-28T10:48:41.683+07:00  WARN 3008 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T10:48:41.686+07:00  INFO 3008 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T10:48:41.853+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-28T10:48:41.856+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T10:48:41.857+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T10:48:41.927+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T10:48:41.927+07:00  INFO 3008 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 986 ms
+2024-04-28T10:48:42.024+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T10:48:42.034+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T10:48:42.048+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T10:48:42.050+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-04-28T10:48:42.092+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection ConnectionID:21 ClientConnectionId: 40a20f47-f8f5-4464-ae49-9db12669794f
+2024-04-28T10:48:42.093+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-04-28T10:48:42.094+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T10:48:42.095+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T10:48:42.139+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T10:48:42.140+07:00  INFO 3008 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:42.244+07:00  WARN 3008 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T10:48:42.436+07:00  WARN 3008 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T10:48:42.640+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T10:48:42.669+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-28T10:48:42.677+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 1.822 seconds (process running for 43.39)
+2024-04-28T10:48:42.679+07:00  INFO 3008 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T10:48:51.228+07:00  INFO 3008 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (2 additions, 0 deletions, 0 modifications)
+2024-04-28T10:48:51.245+07:00  INFO 3008 --- [BackEnd] [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:51.246+07:00  INFO 3008 --- [BackEnd] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-04-28T10:48:51.249+07:00  INFO 3008 --- [BackEnd] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-04-28T10:48:51.417+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 3008 (D:\Nhom19\Nhom19_TKPMHDT\BackEnd\target\classes started by ninhn in D:\Nhom19\Nhom19_TKPMHDT\BackEnd)
+2024-04-28T10:48:51.418+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T10:48:51.814+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T10:48:51.816+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-04-28T10:48:51.927+07:00  WARN 3008 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T10:48:51.931+07:00  INFO 3008 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T10:48:52.097+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-28T10:48:52.098+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T10:48:52.099+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T10:48:52.172+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T10:48:52.173+07:00  INFO 3008 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 750 ms
+2024-04-28T10:48:52.314+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T10:48:52.330+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T10:48:52.346+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T10:48:52.349+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-04-28T10:48:52.397+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection ConnectionID:31 ClientConnectionId: 95f5211f-f332-4aaa-9765-cd365365309d
+2024-04-28T10:48:52.399+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-04-28T10:48:52.400+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T10:48:52.400+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T10:48:52.436+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T10:48:52.437+07:00  INFO 3008 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:48:52.519+07:00  WARN 3008 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T10:48:52.664+07:00  WARN 3008 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T10:48:52.798+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T10:48:52.830+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-28T10:48:52.839+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 1.497 seconds (process running for 53.552)
+2024-04-28T10:48:52.842+07:00  INFO 3008 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T10:49:23.932+07:00  INFO 3008 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-28T10:49:23.946+07:00  INFO 3008 --- [BackEnd] [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:49:23.947+07:00  INFO 3008 --- [BackEnd] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-04-28T10:49:23.950+07:00  INFO 3008 --- [BackEnd] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-04-28T10:49:24.101+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 3008 (D:\Nhom19\Nhom19_TKPMHDT\BackEnd\target\classes started by ninhn in D:\Nhom19\Nhom19_TKPMHDT\BackEnd)
+2024-04-28T10:49:24.102+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T10:49:24.503+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T10:49:24.506+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-04-28T10:49:24.616+07:00  WARN 3008 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T10:49:24.618+07:00  INFO 3008 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T10:49:24.723+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-28T10:49:24.724+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T10:49:24.724+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T10:49:24.830+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T10:49:24.831+07:00  INFO 3008 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 726 ms
+2024-04-28T10:49:24.944+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T10:49:24.951+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T10:49:24.958+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T10:49:24.959+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2024-04-28T10:49:24.991+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection ConnectionID:41 ClientConnectionId: 090c446b-dc6b-4b7b-9a73-f3b8b8c2feb8
+2024-04-28T10:49:24.992+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2024-04-28T10:49:24.993+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T10:49:24.993+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T10:49:25.021+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T10:49:25.021+07:00  INFO 3008 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:49:25.087+07:00  WARN 3008 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T10:49:25.219+07:00  WARN 3008 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T10:49:25.339+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T10:49:25.358+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-28T10:49:25.366+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 1.308 seconds (process running for 86.079)
+2024-04-28T10:49:25.369+07:00  INFO 3008 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T10:49:28.603+07:00  INFO 3008 --- [BackEnd] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-28T10:49:28.605+07:00  INFO 3008 --- [BackEnd] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-28T10:49:28.610+07:00  INFO 3008 --- [BackEnd] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-04-28T10:49:29.861+07:00  INFO 3008 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-28T10:49:29.874+07:00  INFO 3008 --- [BackEnd] [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:49:29.875+07:00  INFO 3008 --- [BackEnd] [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2024-04-28T10:49:29.879+07:00  INFO 3008 --- [BackEnd] [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2024-04-28T10:49:30.097+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 3008 (D:\Nhom19\Nhom19_TKPMHDT\BackEnd\target\classes started by ninhn in D:\Nhom19\Nhom19_TKPMHDT\BackEnd)
+2024-04-28T10:49:30.097+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T10:49:30.614+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T10:49:30.617+07:00  INFO 3008 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-04-28T10:49:30.814+07:00  WARN 3008 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T10:49:30.831+07:00  INFO 3008 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T10:49:31.003+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-28T10:49:31.005+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T10:49:31.007+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T10:49:31.080+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T10:49:31.080+07:00  INFO 3008 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 977 ms
+2024-04-28T10:49:31.194+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T10:49:31.202+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T10:49:31.211+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T10:49:31.213+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2024-04-28T10:49:31.247+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection ConnectionID:51 ClientConnectionId: a9179eb2-1078-45e0-bd22-8d432ce73821
+2024-04-28T10:49:31.247+07:00  INFO 3008 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2024-04-28T10:49:31.249+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T10:49:31.249+07:00  WARN 3008 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T10:49:31.285+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T10:49:31.286+07:00  INFO 3008 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:49:31.405+07:00  WARN 3008 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T10:49:31.601+07:00  WARN 3008 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T10:49:31.798+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T10:49:31.831+07:00  INFO 3008 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-28T10:49:31.840+07:00  INFO 3008 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 1.813 seconds (process running for 92.554)
+2024-04-28T10:49:31.846+07:00  INFO 3008 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T10:49:39.438+07:00  INFO 3008 --- [BackEnd] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T10:49:39.439+07:00  INFO 3008 --- [BackEnd] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2024-04-28T10:49:39.441+07:00  INFO 3008 --- [BackEnd] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2024-04-28T11:52:13.757+07:00  INFO 7080 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 7080 (D:\KnowledgeHub\BackEnd\target\classes started by ninhn in D:\KnowledgeHub\BackEnd)
+2024-04-28T11:52:13.761+07:00  INFO 7080 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T11:52:13.912+07:00  INFO 7080 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-28T11:52:13.913+07:00  INFO 7080 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-28T11:52:15.881+07:00  INFO 7080 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T11:52:15.951+07:00  INFO 7080 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 0 JPA repository interfaces.
+2024-04-28T11:52:16.784+07:00  WARN 7080 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T11:52:16.901+07:00  INFO 7080 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T11:52:18.175+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 2003 (http)
+2024-04-28T11:52:18.206+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T11:52:18.206+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T11:52:18.345+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T11:52:18.346+07:00  INFO 7080 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4431 ms
+2024-04-28T11:52:18.810+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T11:52:19.062+07:00  INFO 7080 --- [BackEnd] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-28T11:52:19.176+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T11:52:19.820+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T11:52:19.895+07:00  INFO 7080 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-28T11:52:20.824+07:00  INFO 7080 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 26d228af-dd95-4aaa-bf7d-08da15727321
+2024-04-28T11:52:20.828+07:00  INFO 7080 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-28T11:52:20.907+07:00  WARN 7080 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T11:52:20.909+07:00  WARN 7080 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T11:52:21.732+07:00 ERROR 7080 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'categoryid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.DocumentEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-04-28T11:52:21.734+07:00  WARN 7080 --- [BackEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'categoryid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.DocumentEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-04-28T11:52:21.738+07:00  INFO 7080 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-28T11:52:21.743+07:00  INFO 7080 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-28T11:52:21.746+07:00  INFO 7080 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-04-28T11:52:21.776+07:00  INFO 7080 --- [BackEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-04-28T11:52:21.837+07:00 ERROR 7080 --- [BackEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'categoryid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.DocumentEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.5.jar:3.2.5]
+	at com.KnowledgeHubbackend.BackEndApplication.main(BackEndApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.5.jar:3.2.5]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'categoryid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.DocumentEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.6.jar:6.1.6]
+	... 19 common frames omitted
+Caused by: org.hibernate.MappingException: Column 'categoryid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.DocumentEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.hibernate.mapping.Value.checkColumnDuplication(Value.java:197) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.MappingHelper.checkPropertyColumnDuplication(MappingHelper.java:249) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:938) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:678) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:273) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:497) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:273) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.6.jar:6.1.6]
+	... 23 common frames omitted
+
+2024-04-28T11:53:27.415+07:00  INFO 15556 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 15556 (D:\KnowledgeHub\BackEnd\target\classes started by ninhn in D:\KnowledgeHub\BackEnd)
+2024-04-28T11:53:27.419+07:00  INFO 15556 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T11:53:27.520+07:00  INFO 15556 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-28T11:53:27.521+07:00  INFO 15556 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-28T11:53:29.240+07:00  INFO 15556 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T11:53:29.293+07:00  INFO 15556 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 0 JPA repository interfaces.
+2024-04-28T11:53:30.069+07:00  WARN 15556 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T11:53:30.159+07:00  INFO 15556 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T11:53:31.288+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 2003 (http)
+2024-04-28T11:53:31.314+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T11:53:31.315+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T11:53:31.473+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T11:53:31.474+07:00  INFO 15556 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3951 ms
+2024-04-28T11:53:31.989+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T11:53:32.176+07:00  INFO 15556 --- [BackEnd] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-28T11:53:32.266+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T11:53:32.875+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T11:53:32.940+07:00  INFO 15556 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-28T11:53:33.567+07:00  INFO 15556 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 889f29c2-7c2f-4f22-b168-c532d24f8616
+2024-04-28T11:53:33.571+07:00  INFO 15556 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-28T11:53:33.623+07:00  WARN 15556 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T11:53:33.625+07:00  WARN 15556 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T11:53:34.359+07:00 ERROR 15556 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'notificationid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.NotificationsEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-04-28T11:53:34.360+07:00  WARN 15556 --- [BackEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'notificationid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.NotificationsEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-04-28T11:53:34.363+07:00  INFO 15556 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-28T11:53:34.369+07:00  INFO 15556 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-28T11:53:34.373+07:00  INFO 15556 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-04-28T11:53:34.407+07:00  INFO 15556 --- [BackEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-04-28T11:53:34.451+07:00 ERROR 15556 --- [BackEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'notificationid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.NotificationsEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.5.jar:3.2.5]
+	at com.KnowledgeHubbackend.BackEndApplication.main(BackEndApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.5.jar:3.2.5]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'notificationid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.NotificationsEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.6.jar:6.1.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.6.jar:6.1.6]
+	... 19 common frames omitted
+Caused by: org.hibernate.MappingException: Column 'notificationid' is duplicated in mapping for entity 'com.KnowledgeHubbackend.entity.NotificationsEntity' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.hibernate.mapping.Value.checkColumnDuplication(Value.java:197) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.MappingHelper.checkPropertyColumnDuplication(MappingHelper.java:249) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:938) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:678) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:273) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:497) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:273) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.6.jar:6.1.6]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.6.jar:6.1.6]
+	... 23 common frames omitted
+
+2024-04-28T11:54:10.431+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 5072 (D:\KnowledgeHub\BackEnd\target\classes started by ninhn in D:\KnowledgeHub\BackEnd)
+2024-04-28T11:54:10.435+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T11:54:10.528+07:00  INFO 5072 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-28T11:54:10.529+07:00  INFO 5072 --- [BackEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-28T11:54:12.046+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T11:54:12.108+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 0 JPA repository interfaces.
+2024-04-28T11:54:12.731+07:00  WARN 5072 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T11:54:12.795+07:00  INFO 5072 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T11:54:13.916+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 2003 (http)
+2024-04-28T11:54:13.950+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T11:54:13.951+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T11:54:14.389+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T11:54:14.391+07:00  INFO 5072 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3859 ms
+2024-04-28T11:54:14.997+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T11:54:15.145+07:00  INFO 5072 --- [BackEnd] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-28T11:54:15.235+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T11:54:16.029+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T11:54:16.098+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-28T11:54:16.853+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 30f9689e-05df-4ab7-9a42-59e0a421314e
+2024-04-28T11:54:16.860+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-28T11:54:17.006+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T11:54:17.009+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T11:54:18.054+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T11:54:18.070+07:00  INFO 5072 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:18.487+07:00  WARN 5072 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T11:54:19.523+07:00  WARN 5072 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T11:54:21.247+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T11:54:21.420+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 2003 (http) with context path ''
+2024-04-28T11:54:21.451+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 12.063 seconds (process running for 13.781)
+2024-04-28T11:54:27.592+07:00  INFO 5072 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 30 class path changes (30 additions, 0 deletions, 0 modifications)
+2024-04-28T11:54:27.681+07:00  INFO 5072 --- [BackEnd] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:27.690+07:00  INFO 5072 --- [BackEnd] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-28T11:54:27.694+07:00  INFO 5072 --- [BackEnd] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-28T11:54:27.920+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 5072 (D:\KnowledgeHub\BackEnd\target\classes started by ninhn in D:\KnowledgeHub\BackEnd)
+2024-04-28T11:54:27.921+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T11:54:28.648+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T11:54:28.656+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-04-28T11:54:28.873+07:00  WARN 5072 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T11:54:28.881+07:00  INFO 5072 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T11:54:29.014+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 2003 (http)
+2024-04-28T11:54:29.016+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T11:54:29.016+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T11:54:29.092+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T11:54:29.092+07:00  INFO 5072 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1165 ms
+2024-04-28T11:54:29.217+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T11:54:29.226+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T11:54:29.243+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T11:54:29.246+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-04-28T11:54:29.327+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection ConnectionID:11 ClientConnectionId: c1ff1ab2-2b57-48f2-bc3e-602759799f6f
+2024-04-28T11:54:29.327+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-04-28T11:54:29.334+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T11:54:29.336+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T11:54:31.810+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T11:54:33.642+07:00  INFO 5072 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:33.759+07:00  WARN 5072 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T11:54:33.935+07:00  WARN 5072 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T11:54:34.090+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T11:54:34.116+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 2003 (http) with context path ''
+2024-04-28T11:54:34.125+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 6.281 seconds (process running for 26.454)
+2024-04-28T11:54:34.129+07:00  INFO 5072 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T11:54:45.818+07:00  INFO 5072 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-28T11:54:45.833+07:00  INFO 5072 --- [BackEnd] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:45.834+07:00  INFO 5072 --- [BackEnd] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-04-28T11:54:45.837+07:00  INFO 5072 --- [BackEnd] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-04-28T11:54:45.999+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 5072 (D:\KnowledgeHub\BackEnd\target\classes started by ninhn in D:\KnowledgeHub\BackEnd)
+2024-04-28T11:54:46.000+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T11:54:46.407+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T11:54:46.412+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2024-04-28T11:54:46.545+07:00  WARN 5072 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T11:54:46.549+07:00  INFO 5072 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T11:54:46.676+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 2003 (http)
+2024-04-28T11:54:46.678+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T11:54:46.678+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T11:54:46.742+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T11:54:46.742+07:00  INFO 5072 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 737 ms
+2024-04-28T11:54:46.807+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T11:54:46.814+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T11:54:46.823+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T11:54:46.827+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-04-28T11:54:46.861+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection ConnectionID:21 ClientConnectionId: 12da47e1-8e49-4033-8390-11b654cfc992
+2024-04-28T11:54:46.862+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-04-28T11:54:46.863+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T11:54:46.863+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T11:54:47.363+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T11:54:48.892+07:00  INFO 5072 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:48.979+07:00  WARN 5072 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T11:54:49.151+07:00  WARN 5072 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T11:54:49.418+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T11:54:49.503+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 2003 (http) with context path ''
+2024-04-28T11:54:49.512+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 3.559 seconds (process running for 41.841)
+2024-04-28T11:54:49.516+07:00  INFO 5072 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T11:54:51.966+07:00  INFO 5072 --- [BackEnd] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-28T11:54:51.976+07:00  INFO 5072 --- [BackEnd] [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:51.977+07:00  INFO 5072 --- [BackEnd] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-04-28T11:54:51.980+07:00  INFO 5072 --- [BackEnd] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-04-28T11:54:52.139+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Starting BackEndApplication using Java 21.0.2 with PID 5072 (D:\KnowledgeHub\BackEnd\target\classes started by ninhn in D:\KnowledgeHub\BackEnd)
+2024-04-28T11:54:52.140+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : No active profile set, falling back to 1 default profile: "default"
+2024-04-28T11:54:52.563+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-28T11:54:52.568+07:00  INFO 5072 --- [BackEnd] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2024-04-28T11:54:52.686+07:00  WARN 5072 --- [BackEnd] [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-04-28T11:54:52.689+07:00  INFO 5072 --- [BackEnd] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-04-28T11:54:52.776+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 2003 (http)
+2024-04-28T11:54:52.778+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-28T11:54:52.778+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-28T11:54:52.824+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-28T11:54:52.824+07:00  INFO 5072 --- [BackEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 680 ms
+2024-04-28T11:54:52.883+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-28T11:54:52.889+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-28T11:54:52.898+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-28T11:54:52.900+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-04-28T11:54:52.929+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection ConnectionID:31 ClientConnectionId: 38245f48-e0b2-4606-a86f-29b5d8d1311a
+2024-04-28T11:54:52.930+07:00  INFO 5072 --- [BackEnd] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-04-28T11:54:52.931+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2012Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-28T11:54:52.931+07:00  WARN 5072 --- [BackEnd] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2012Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2024-04-28T11:54:53.282+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-28T11:54:53.462+07:00  INFO 5072 --- [BackEnd] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:54:53.548+07:00  WARN 5072 --- [BackEnd] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-28T11:54:53.659+07:00  WARN 5072 --- [BackEnd] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-04-28T11:54:53.792+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-28T11:54:53.851+07:00  INFO 5072 --- [BackEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 2003 (http) with context path ''
+2024-04-28T11:54:53.860+07:00  INFO 5072 --- [BackEnd] [restartedMain] c.K.BackEndApplication                   : Started BackEndApplication in 1.771 seconds (process running for 46.19)
+2024-04-28T11:54:53.863+07:00  INFO 5072 --- [BackEnd] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-28T11:54:55.539+07:00  INFO 5072 --- [BackEnd] [http-nio-2003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-28T11:54:55.540+07:00  INFO 5072 --- [BackEnd] [http-nio-2003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-28T11:54:55.544+07:00  INFO 5072 --- [BackEnd] [http-nio-2003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-04-28T11:56:16.292+07:00  INFO 5072 --- [BackEnd] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-28T11:56:16.294+07:00  INFO 5072 --- [BackEnd] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-04-28T11:56:16.297+07:00  INFO 5072 --- [BackEnd] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
