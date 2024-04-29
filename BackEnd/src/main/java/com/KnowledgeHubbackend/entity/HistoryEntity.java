@@ -1,5 +1,6 @@
 package com.KnowledgeHubbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -16,6 +17,7 @@ public class HistoryEntity {
     @ManyToOne
     @JoinColumn(name = "documentid")
     private DocumentEntity documentid;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "dateupdate")
     private Date dateupdate;
     @Column(name = "description",columnDefinition = "NVARCHAR(MAX)")

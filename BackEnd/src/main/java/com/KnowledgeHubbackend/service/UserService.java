@@ -8,13 +8,14 @@ import java.util.List;
 
 public interface UserService {
     List<UsersDTO> getAll(Pageable pageable);
-    List<UsersDTO> getByUserName(Pageable pageable);
-    List<UsersDTO> getByEmail(Pageable pageable);
-    List<UsersDTO> getByPhone(Pageable pageable);
+    List<UsersDTO> getByUserName(String username,Pageable pageable);
+    List<UsersDTO> getByUserRole(Integer roleid,Pageable pageable);
+    List<UsersDTO> getByEmail(String email,Pageable pageable);
+    List<UsersDTO> getByPhone(String phone,Pageable pageable);
     int totalItem();
-    UsersDTO getByUserid(String usersid);
+    UsersDTO getByUserid(String userid);
     void deleteByUserid(String userid);
-    void createUser(UsersDTO userDTO);
+    void createUser(UsersDTO userDTO, Integer roleid);
 
     void updateUser(UsersDTO userDTO);
 

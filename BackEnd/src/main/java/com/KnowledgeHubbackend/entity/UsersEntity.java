@@ -1,5 +1,6 @@
 package com.KnowledgeHubbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -18,6 +19,7 @@ public class UsersEntity {
     private String email;
     @Column(name = "phone",columnDefinition = "NVARCHAR(MAX)")
     private String phone;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birthofday")
     private Date birthofday;
     @Column(name = "gender")

@@ -1,8 +1,6 @@
 package com.KnowledgeHubbackend.dto;
 
 import java.sql.Date;
-
-
 public class UsersDTO {
     private String userid;
     private String username;

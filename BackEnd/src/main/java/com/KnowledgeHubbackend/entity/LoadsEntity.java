@@ -1,5 +1,6 @@
 package com.KnowledgeHubbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -16,6 +17,7 @@ public class LoadsEntity {
     @ManyToOne
     @JoinColumn(name = "userid")
     private UsersEntity userid;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "dateDown")
     private Date dateDown;
 

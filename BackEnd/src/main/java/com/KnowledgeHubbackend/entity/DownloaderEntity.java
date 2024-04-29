@@ -1,5 +1,6 @@
 package com.KnowledgeHubbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -16,6 +17,7 @@ public class DownloaderEntity {
     private String downEmail;
     @Column(name = "downPhone",columnDefinition = "NVARCHAR(MAX)")
     private String downPhone;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "dateDown")
     private Date dateDown;
     @ManyToOne
