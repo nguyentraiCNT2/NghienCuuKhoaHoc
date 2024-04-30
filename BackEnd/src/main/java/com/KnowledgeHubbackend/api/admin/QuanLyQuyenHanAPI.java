@@ -33,7 +33,7 @@ public class QuanLyQuyenHanAPI {
         return result;
     }
     @GetMapping("/hien-thi-theo-ten/{rolename}")
-    public RolesOutPut getALL(@PathVariable String rolename,@RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
+    public RolesOutPut getByRolename(@PathVariable String rolename,@RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
         RolesOutPut result = new RolesOutPut();
         result.setPage(page);
         Pageable pageable =  PageRequest.of(page - 1, limit);
@@ -53,7 +53,7 @@ public class QuanLyQuyenHanAPI {
         }
     }
     @PostMapping("/them-moi-quyen-han")
-    public ResponseEntity<String> createUser(@RequestBody RolesDTO rolesDTO) {
+    public ResponseEntity<String> createRole(@RequestBody RolesDTO rolesDTO) {
         try {
             rolesService.createRoles(rolesDTO);
             return new ResponseEntity<>("Thêm thành công" , HttpStatus.CREATED);
@@ -62,7 +62,7 @@ public class QuanLyQuyenHanAPI {
         }
     }
     @PutMapping("/chinh-sua-thong-tin-quyen-han/{roleid}")
-    public ResponseEntity<String> updateUserAccount(@PathVariable Integer roleid, @RequestBody RolesDTO rolesDTO) {
+    public ResponseEntity<String> updateRole(@PathVariable Integer roleid, @RequestBody RolesDTO rolesDTO) {
         try {
             rolesDTO.setRoleid(roleid);
             rolesService.updateRoles(rolesDTO);
@@ -75,7 +75,7 @@ public class QuanLyQuyenHanAPI {
     }
     @Transactional
     @DeleteMapping("/xoa-thong-tin-quyen-han/{roleid}")
-    public ResponseEntity<String> deleteUserAccount(@PathVariable Integer roleid) {
+    public ResponseEntity<String> deleteRole(@PathVariable Integer roleid) {
         try {
             rolesService.deleteByRoleid(roleid);
             return new ResponseEntity<>("Xóa thành công", HttpStatus.OK);
