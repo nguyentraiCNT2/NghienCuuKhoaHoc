@@ -1,0 +1,19 @@
+package com.KnowledgeHubbackend.service;
+
+import com.KnowledgeHubbackend.dto.RolesDTO;
+import com.KnowledgeHubbackend.dto.SuppliersDTO;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+public interface SuppliersService {
+    List<SuppliersDTO> getAll(Pageable pageable);
+    List<SuppliersDTO> getBySuppliername(String suppliername,Pageable pageable);
+    int totalItem();
+    SuppliersDTO getBySupplierid(Integer supplierid);
+    void deleteBySupplierid(Integer supplierid);
+    void createSuppliers(SuppliersDTO suppliersDTO);
+
+    void updateSuppliers(SuppliersDTO suppliersDTO);
+
+}
