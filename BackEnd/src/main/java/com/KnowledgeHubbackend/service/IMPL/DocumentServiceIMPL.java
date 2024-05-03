@@ -1,8 +1,6 @@
 package com.KnowledgeHubbackend.service.IMPL;
 
-import com.KnowledgeHubbackend.dto.CategoryDTO;
-import com.KnowledgeHubbackend.dto.DocumentDTO;
-import com.KnowledgeHubbackend.dto.MenuDTO;
+import com.KnowledgeHubbackend.dto.*;
 import com.KnowledgeHubbackend.entity.*;
 import com.KnowledgeHubbackend.repository.*;
 import com.KnowledgeHubbackend.service.DocumentService;
@@ -24,7 +22,7 @@ import java.util.UUID;
 
 @Service
 public class DocumentServiceIMPL implements DocumentService {
-    @Value(" D:/KnowledgeHub/BackEnd/src/main/resources/templates/")
+    @Value("D:/KnowledgeHub/uploaddocument/")
     // Đường dẫn để lưu ảnh, có thể đặt trong file properties/application.yml
     private String imageSavePath;
     @Autowired
@@ -58,6 +56,7 @@ public class DocumentServiceIMPL implements DocumentService {
         List<DocumentEntity> documentEntities = documentRepository.findAll(pageable).getContent();
         for (DocumentEntity item: documentEntities
         ) {
+
             DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
             results.add(dto);
         }
@@ -82,6 +81,7 @@ public class DocumentServiceIMPL implements DocumentService {
         List<DocumentEntity> documentEntities = documentRepository.findAllByViewsOrderByAsc(pageable);
         for (DocumentEntity item: documentEntities
         ) {
+
             DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
             results.add(dto);
         }
@@ -113,9 +113,9 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
-    public List<DocumentDTO> getByDocumentname(String authorname, Pageable pageable) {
+    public List<DocumentDTO> getByDocumentname(String documentname, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
-        List<DocumentEntity> documentEntities = documentRepository.findByDocumentname(authorname,pageable);
+        List<DocumentEntity> documentEntities = documentRepository.findByDocumentname(documentname,pageable);
         for (DocumentEntity item: documentEntities
         ) {
             DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
@@ -208,7 +208,13 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
-    public void deleteByDocumentid(Integer documentid) {
+    public void deleteByDocumentid(Integer documentid)throws IOException {
+        DocumentEntity existingDocument = documentRepository.findByDocumentid(documentid)
+                .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentid));
+        if (existingDocument.getFileURL() != null && !existingDocument.getFileURL().isEmpty()) {
+            String oldFilePath = imageSavePath + existingDocument.getFileURL();
+            Files.deleteIfExists(Paths.get(oldFilePath));
+        }
         documentRepository.deleteByDocumentid(documentid);
     }
 
@@ -235,10 +241,56 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
-    public void updateDocument(DocumentDTO documentDTO) {
-        DocumentEntity existingDocument = documentRepository.findByDocumentid(documentDTO.getDocumentid())
-                .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentDTO.getDocumentid()));
-        modelMapper.map(documentDTO, existingDocument);
-        documentRepository.save(existingDocument);
+    public void updateDocument(DocumentDTO documentDTO,MultipartFile file)throws IOException {
+        try {
+            DocumentEntity existingDocument = documentRepository.findByDocumentid(documentDTO.getDocumentid())
+                    .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentDTO.getDocumentid()));
+            CategoryEntity category = categoryRepository.findByCategoryid(documentDTO.getCategoryid().getCategoryid()).orElse(null);
+            SuppliersEntity suppliers = suppliersRepository.findBySupplierid(documentDTO.getSupplierid().getSupplierid()).orElse(null);
+            PublishersEntity publishers = publishersRepository.findByPublisherid(documentDTO.getPublisherid().getPublisherid()).orElse(null);
+            AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
+            MenuEntity menu = menuRepository.findByMenuid(documentDTO.getMenuid().getMenuid()).orElse(null);
+            String fileurl = existingDocument.getFileURL();
+            Integer Views = existingDocument.getViews();
+            Integer countDown = existingDocument.getCountDownload();
+            CategoryDTO categoryDTO = modelMapper.map(category,CategoryDTO.class);
+            SuppliersDTO suppliersDTO = modelMapper.map(suppliers,SuppliersDTO.class);
+            PublishersDTO publishersDTO = modelMapper.map(publishers,PublishersDTO.class);
+            AuthorDTO authorDTO = modelMapper.map(author,AuthorDTO.class);
+            MenuDTO menuDTO = modelMapper.map(menu,MenuDTO.class);
+            documentDTO.setPublisherid(publishersDTO);
+            documentDTO.setSupplierid(suppliersDTO);
+            documentDTO.setAuthorID(authorDTO);
+            documentDTO.setMenuid(menuDTO);
+            documentDTO.setCategoryid(categoryDTO);
+            if (!file.isEmpty()){
+                // Xóa tệp tin cũ nếu có
+                if (existingDocument.getFileURL() != null && !existingDocument.getFileURL().isEmpty()) {
+                    String oldFilePath = imageSavePath + existingDocument.getFileURL();
+                    Files.deleteIfExists(Paths.get(oldFilePath));
+                }
+
+                modelMapper.map(documentDTO, existingDocument);
+                String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                String filePath = imageSavePath + filename;
+                Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
+                existingDocument.setFileURL(filename);
+
+                existingDocument.setCountDownload(countDown);
+                existingDocument.setViews(Views);
+                documentRepository.save(existingDocument);
+
+            }
+            else {
+                modelMapper.map(documentDTO, existingDocument);
+                existingDocument.setFileURL(fileurl);
+                existingDocument.setCountDownload(countDown);
+                existingDocument.setViews(Views);
+                documentRepository.save(existingDocument);
+            }
+        }catch (Exception e){
+
+        }
+
     }
 }
