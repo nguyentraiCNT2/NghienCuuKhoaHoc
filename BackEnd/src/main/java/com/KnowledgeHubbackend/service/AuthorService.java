@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AuthorService {
     List<AuthorDTO> getAll(Pageable pageable);
-    @Query("select a from  AuthorEntity a where a.authorname like % :authorname %")
+
     List<AuthorDTO> getByAuthorname(String authorname,Pageable pageable);
     int totalItem();
     AuthorDTO getByAuthorid(Integer authorid);

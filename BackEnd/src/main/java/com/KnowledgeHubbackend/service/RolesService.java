@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RolesService {
     List<RolesDTO> getAll(Pageable pageable);
-    @Query("select a from  RolesEntity a where a.rolename like % :rolename %")
+
     List<RolesDTO> getByRoleName(String rolename,Pageable pageable);
     int totalItem();
     RolesDTO getByRoleid(Integer roleid);

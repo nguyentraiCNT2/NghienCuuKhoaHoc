@@ -12,6 +12,7 @@ import java.util.Optional;
 @Repository
 public interface DownloadersRepository extends JpaRepository<DownloaderEntity, Integer> {
     Optional<DownloaderEntity> findByDownID(Integer downID);
+
     List<DownloaderEntity> findByDownName(String downName, Pageable pageable);
     void deleteByDownID(Integer downID);
     DownloaderEntity saveAndFlush(DownloaderEntity downloaderEntity);

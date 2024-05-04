@@ -16,7 +16,7 @@ public interface DocumentService {
     List<DocumentDTO> getAllByViewsOrderByAsc(Pageable pageable);
     List<DocumentDTO> getAllByCountDownloadOrderByDesc(Pageable pageable);
     List<DocumentDTO> getAllByCountDownloadOrderByAsc(Pageable pageable);
-    @Query("select d from  DocumentEntity d where d.documentname like % :documentname %")
+
     List<DocumentDTO> getByDocumentname(String documentname,Pageable pageable);
     List<DocumentDTO> getByCategoryid(Integer categoryid, Pageable pageable);
     List<DocumentDTO> getByAuthorID(Integer authorID, Pageable pageable);

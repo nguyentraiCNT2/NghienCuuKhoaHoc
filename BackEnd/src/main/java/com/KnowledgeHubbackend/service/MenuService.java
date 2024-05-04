@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface MenuService {
     List<MenuDTO> getAll(Pageable pageable);
-    @Query("select a from  MenuEntity a where a.menuName like % :menuName %")
     List<MenuDTO> getByMenuName(String menuName,Pageable pageable);
     int totalItem();
     MenuDTO getByMenuid(Integer menuid);

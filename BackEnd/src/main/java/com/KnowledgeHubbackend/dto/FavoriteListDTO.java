@@ -1,11 +1,12 @@
 package com.KnowledgeHubbackend.dto;
 
+import java.sql.Date;
+
 public class FavoriteListDTO {
     private Integer favoriteListid;
-    private String favoriteListName;
-    private String description;
     private DocumentDTO documentid;
     private UsersDTO userid;
+    private Date dateAdd;
 
     public Integer getFavoriteListid() {
         return favoriteListid;
@@ -13,22 +14,6 @@ public class FavoriteListDTO {
 
     public void setFavoriteListid(Integer favoriteListid) {
         this.favoriteListid = favoriteListid;
-    }
-
-    public String getFavoriteListName() {
-        return favoriteListName;
-    }
-
-    public void setFavoriteListName(String favoriteListName) {
-        this.favoriteListName = favoriteListName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public DocumentDTO getDocumentid() {
@@ -45,5 +30,13 @@ public class FavoriteListDTO {
 
     public void setUserid(UsersDTO userid) {
         this.userid = userid;
+    }
+
+    public Date getDateAdd() {
+        return dateAdd;
+    }
+
+    public void setDateAdd(Date dateAdd) {
+        this.dateAdd = dateAdd;
     }
 }

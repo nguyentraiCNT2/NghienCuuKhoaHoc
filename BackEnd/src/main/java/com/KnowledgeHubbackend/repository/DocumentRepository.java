@@ -4,6 +4,7 @@ import com.KnowledgeHubbackend.entity.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.Optional;
 @Repository
 public interface DocumentRepository extends JpaRepository<DocumentEntity, Integer> {
     Optional<DocumentEntity> findByDocumentid(Integer documentid);
-    List<DocumentEntity> findByDocumentname(String documentname, Pageable pageable);
+    @Query("select d from  DocumentEntity d where d.documentname like %:documentname%")
+    List<DocumentEntity> findByDocumentname(@Param("documentname") String documentname, Pageable pageable);
     List<DocumentEntity> findByCategoryid(CategoryEntity categoryid, Pageable pageable);
     List<DocumentEntity> findByAuthorID(AuthorEntity authorID, Pageable pageable);
     List<DocumentEntity> findByPublisherid(PublishersEntity publisherid, Pageable pageable);

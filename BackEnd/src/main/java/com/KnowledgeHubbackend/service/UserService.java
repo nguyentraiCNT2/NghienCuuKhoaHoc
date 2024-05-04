@@ -9,12 +9,11 @@ import java.util.List;
 
 public interface UserService {
     List<UsersDTO> getAll(Pageable pageable);
-    @Query("select a from  UsersEntity a where a.username like % :username %")
     List<UsersDTO> getByUserName(String username,Pageable pageable);
     List<UsersDTO> getByUserRole(Integer roleid,Pageable pageable);
-    @Query("select a from  UsersEntity a where a.email like % :email %")
+
     List<UsersDTO> getByEmail(String email,Pageable pageable);
-    @Query("select a from  UsersEntity a where a.phone like % :phone %")
+
     List<UsersDTO> getByPhone(String phone,Pageable pageable);
     int totalItem();
     UsersDTO getByUserid(String userid);
