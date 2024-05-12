@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/quan-ly-tai-lieu")
+@RequestMapping("/admin/quan-ly-tai-lieu")
 public class QuanLyTaiLieuAPI {
     @Autowired
     private final DocumentService documentService;
@@ -152,7 +152,7 @@ public class QuanLyTaiLieuAPI {
     ,@RequestParam("categoryid") Integer categoryid ,@RequestParam("description") String description
             ,@RequestParam("status") Boolean status,@RequestParam("supplierid") Integer supplierid
             ,@RequestParam("authorID") Integer authorID,@RequestParam("publisherid") Integer publisherid
-            ,@RequestParam("menuid") Integer menuid) {
+            ,@RequestParam("menuid") Integer menuid, @RequestParam("userid") String userid) {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryid(categoryid);
         SuppliersDTO suppliersDTO = new SuppliersDTO();
@@ -175,7 +175,7 @@ public class QuanLyTaiLieuAPI {
         documentDTO.setMenuid(menuDTO);
         documentDTO.setPublisherid(publishersDTO);
         try {
-            documentService.createDocument(documentDTO,file);
+            documentService.createDocument(documentDTO,file,userid);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -187,7 +187,7 @@ public class QuanLyTaiLieuAPI {
             ,@RequestParam("categoryid") Integer categoryid ,@RequestParam("description") String description
             ,@RequestParam("status") Boolean status,@RequestParam("supplierid") Integer supplierid
             ,@RequestParam("authorID") Integer authorID,@RequestParam("publisherid") Integer publisherid
-            ,@RequestParam("menuid") Integer menuid) {
+            ,@RequestParam("menuid") Integer menuid, @RequestParam("userid") String userid) {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryid(categoryid);
         SuppliersDTO suppliersDTO = new SuppliersDTO();
@@ -209,7 +209,7 @@ public class QuanLyTaiLieuAPI {
         documentDTO.setPublisherid(publishersDTO);
         try {
             documentDTO.setDocumentid(documentid);
-            documentService.updateDocument(documentDTO,file );
+            documentService.updateDocument(documentDTO,file,userid );
             return new ResponseEntity<>(documentDTO+" Cập nhật thành công", HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

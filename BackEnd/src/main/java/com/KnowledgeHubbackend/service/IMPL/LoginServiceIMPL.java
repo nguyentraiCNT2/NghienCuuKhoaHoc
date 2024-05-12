@@ -63,7 +63,8 @@ public class LoginServiceIMPL implements LoginService {
                     if (useritem.getUserid() == item.getUserid().getUserid()
                     ){
                         // chuyển dữ liệu từ cơ sở dữ liệu về dữ liệu chuyển về client
-                        usersDTO = modelMapper.map(item, UsersDTO.class);
+                        usersDTO = modelMapper.map(useritem, UsersDTO.class);
+                        usersDTO.setPassword(null);
                     }
                 }
             }
@@ -99,7 +100,8 @@ public class LoginServiceIMPL implements LoginService {
 
                         if (roles.getRolename().equals("CTV") || roles.getRolename().equals("Admin") ){
                             // chuyển dữ liệu từ cơ sở dữ liệu về dữ liệu chuyển về client
-                            usersDTO = modelMapper.map(item, UsersDTO.class);
+                            usersDTO = modelMapper.map(useritem, UsersDTO.class);
+                            usersDTO.setPassword(null);
                         }
 
                     }
@@ -137,7 +139,8 @@ public class LoginServiceIMPL implements LoginService {
 
                         if (roles.getRolename().equals("Admin") ){
                             // chuyển dữ liệu từ cơ sở dữ liệu về dữ liệu chuyển về client
-                            usersDTO = modelMapper.map(item, UsersDTO.class);
+                            usersDTO = modelMapper.map(useritem, UsersDTO.class);
+                            usersDTO.setPassword(null);
                         }
                     }
                 }

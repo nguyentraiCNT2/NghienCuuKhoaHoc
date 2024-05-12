@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quan-ly-nguoi-dung-admin")
+@RequestMapping("/admin/quan-ly-nguoi-dung-admin")
 public class QuanLyNguoiDungAPI {
     @Autowired
     private final UserService userService;

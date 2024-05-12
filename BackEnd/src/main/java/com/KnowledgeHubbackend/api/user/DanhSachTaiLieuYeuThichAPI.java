@@ -18,7 +18,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 @RestController
-@RequestMapping("/danh-sach-yeu-thich")
+@RequestMapping("/user/danh-sach-yeu-thich")
 public class DanhSachTaiLieuYeuThichAPI {
     @Autowired
     private final FavoriteListService favoriteListService;

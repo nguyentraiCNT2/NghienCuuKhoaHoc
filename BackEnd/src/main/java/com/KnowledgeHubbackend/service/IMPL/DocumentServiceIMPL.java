@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -39,7 +41,13 @@ public class DocumentServiceIMPL implements DocumentService {
     private final MenuRepository menuRepository;
     @Autowired
     private final CategoryRepository categoryRepository;
-    public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, MenuRepository menuRepository, CategoryRepository categoryRepository) {
+    @Autowired
+    private final HistoryRepository historyRepository;
+    @Autowired
+    private final UserRepository userRepository;
+    @Autowired
+    private final NotificationsRepository notificationsRepository;
+    public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, MenuRepository menuRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository) {
         this.documentRepository = documentRepository;
         this.modelMapper = modelMapper;
         this.authorRepository = authorRepository;
@@ -47,6 +55,9 @@ public class DocumentServiceIMPL implements DocumentService {
         this.suppliersRepository = suppliersRepository;
         this.menuRepository = menuRepository;
         this.categoryRepository = categoryRepository;
+        this.historyRepository = historyRepository;
+        this.userRepository = userRepository;
+        this.notificationsRepository = notificationsRepository;
     }
 
 
@@ -56,7 +67,6 @@ public class DocumentServiceIMPL implements DocumentService {
         List<DocumentEntity> documentEntities = documentRepository.findAll(pageable).getContent();
         for (DocumentEntity item: documentEntities
         ) {
-
             DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
             results.add(dto);
         }
@@ -219,8 +229,9 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
-    public void createDocument(DocumentDTO documentDTO, MultipartFile file) throws IOException {
+    public void createDocument(DocumentDTO documentDTO, MultipartFile file, String userid) throws IOException {
         if (documentDTO != null) {
+            UsersEntity users = userRepository.findByUserid(userid).orElse(null);
             DocumentEntity document = modelMapper.map(documentDTO, DocumentEntity.class);
             CategoryEntity category = categoryRepository.findByCategoryid(documentDTO.getCategoryid().getCategoryid()).orElse(null);
             MenuEntity menu = menuRepository.findByMenuid(documentDTO.getMenuid().getMenuid()).orElse(null);
@@ -236,13 +247,31 @@ public class DocumentServiceIMPL implements DocumentService {
             String filePath = imageSavePath + filename;
             Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
             document.setFileURL(filename);
-            documentRepository.save(document);
+          DocumentEntity saveDocument =  documentRepository.save(document);
+            LocalDate currentDate = LocalDate.now();
+            Date currentSqlDate = Date.valueOf(currentDate);
+            String description=users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname();
+            HistoryEntity historyEntity = new HistoryEntity();
+            historyEntity.setDocumentid(saveDocument);
+            historyEntity.setUserid(users);
+            historyEntity.setDateupdate(currentSqlDate);
+            historyEntity.setDescription(description);
+            historyRepository.save(historyEntity);
+            NotificationsEntity notificationsEntity = new NotificationsEntity();
+            String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
+                    +"Đang chờ xác nhận!";
+            notificationsEntity.setDocumentid(saveDocument);
+            notificationsEntity.setUserid(users);
+            notificationsEntity.setDateadd(currentSqlDate);
+            notificationsEntity.setDescription(descriptionnotification);
+            notificationsRepository.save(notificationsEntity);
         }
     }
 
     @Override
-    public void updateDocument(DocumentDTO documentDTO,MultipartFile file)throws IOException {
+    public void updateDocument(DocumentDTO documentDTO,MultipartFile file, String userid) throws IOException {
         try {
+            UsersEntity users = userRepository.findByUserid(userid).orElse(null);
             DocumentEntity existingDocument = documentRepository.findByDocumentid(documentDTO.getDocumentid())
                     .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentDTO.getDocumentid()));
             CategoryEntity category = categoryRepository.findByCategoryid(documentDTO.getCategoryid().getCategoryid()).orElse(null);
@@ -278,18 +307,51 @@ public class DocumentServiceIMPL implements DocumentService {
 
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);
-                documentRepository.save(existingDocument);
-
+                DocumentEntity saveDocument =  documentRepository.save(existingDocument);
+                LocalDate currentDate = LocalDate.now();
+                Date currentSqlDate = Date.valueOf(currentDate);
+                String description=users.getUsername()+" Đã sửa thông tin tài liệu "+saveDocument.getDocumentname();
+                HistoryEntity historyEntity = new HistoryEntity();
+                historyEntity.setDocumentid(saveDocument);
+                historyEntity.setUserid(users);
+                historyEntity.setDateupdate(currentSqlDate);
+                historyEntity.setDescription(description);
+                historyRepository.save(historyEntity);
+                NotificationsEntity notificationsEntity = new NotificationsEntity();
+                String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
+                        +"Đang chờ xác nhận!";
+                notificationsEntity.setDocumentid(saveDocument);
+                notificationsEntity.setUserid(users);
+                notificationsEntity.setDateadd(currentSqlDate);
+                notificationsEntity.setDescription(descriptionnotification);
+                notificationsRepository.save(notificationsEntity);
             }
             else {
                 modelMapper.map(documentDTO, existingDocument);
                 existingDocument.setFileURL(fileurl);
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);
-                documentRepository.save(existingDocument);
+                DocumentEntity saveDocument =    documentRepository.save(existingDocument);
+                LocalDate currentDate = LocalDate.now();
+                Date currentSqlDate = Date.valueOf(currentDate);
+                String description=users.getUsername()+" Đã sửa thông tin tài liệu "+saveDocument.getDocumentname();
+                HistoryEntity historyEntity = new HistoryEntity();
+                historyEntity.setDocumentid(saveDocument);
+                historyEntity.setUserid(users);
+                historyEntity.setDateupdate(currentSqlDate);
+                historyEntity.setDescription(description);
+                historyRepository.save(historyEntity);
+                NotificationsEntity notificationsEntity = new NotificationsEntity();
+                String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
+                        +"Đang chờ xác nhận!";
+                notificationsEntity.setDocumentid(saveDocument);
+                notificationsEntity.setUserid(users);
+                notificationsEntity.setDateadd(currentSqlDate);
+                notificationsEntity.setDescription(descriptionnotification);
+                notificationsRepository.save(notificationsEntity);
             }
         }catch (Exception e){
-
+        throw  new RuntimeException(e.getMessage());
         }
 
     }

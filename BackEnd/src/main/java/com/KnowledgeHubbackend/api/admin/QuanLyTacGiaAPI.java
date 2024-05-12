@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quan-ly-tac-gia")
+@RequestMapping("/admin/quan-ly-tac-gia")
 public class QuanLyTacGiaAPI {
     @Autowired
     private final AuthorService authorService;

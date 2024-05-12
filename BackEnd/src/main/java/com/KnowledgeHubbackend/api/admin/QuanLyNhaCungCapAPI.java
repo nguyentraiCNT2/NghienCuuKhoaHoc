@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quan-ly-nha-cung-cap")
+@RequestMapping("/admin/quan-ly-nha-cung-cap")
 public class QuanLyNhaCungCapAPI {
     @Autowired
     private final SuppliersService suppliersService;

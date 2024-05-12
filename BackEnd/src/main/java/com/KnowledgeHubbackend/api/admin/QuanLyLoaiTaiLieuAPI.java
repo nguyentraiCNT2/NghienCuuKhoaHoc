@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quan-ly-loai-tai-lieu")
+@RequestMapping("/admin/quan-ly-loai-tai-lieu")
 public class QuanLyLoaiTaiLieuAPI {
     @Autowired
     private final CategoryService categoryService;
@@ -51,7 +51,6 @@ public class QuanLyLoaiTaiLieuAPI {
         Pageable pageable =  PageRequest.of(page - 1, limit);
         result.setListResult(categoryService.getByCategoryname(categoryname,pageable));
         result.setTotalPage((int) Math.ceil((double) (categoryService.totalItem()) / limit));
-        model.addAttribute("getByMenuname", result);
         return result;
     }
     @GetMapping("/hien-thi-theo-id/{categoryid}")

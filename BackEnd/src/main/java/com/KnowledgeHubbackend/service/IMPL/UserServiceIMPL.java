@@ -10,6 +10,7 @@ import com.KnowledgeHubbackend.repository.UserRepository;
 import com.KnowledgeHubbackend.repository.UserRoleRepository;
 import com.KnowledgeHubbackend.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
+import org.mindrot.jbcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -141,6 +142,8 @@ public class UserServiceIMPL implements UserService {
             UserRoleEntity userRoleEntity = new UserRoleEntity();
             userRoleEntity.setRoleid(roles);
             userRoleEntity.setUserid(user);
+            String hashedPassword =   BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+            user.setPassword(hashedPassword);
             if (user != null && userRoleEntity!= null) {
                 userRepository.save(user);
                 userRoleRepository.save(userRoleEntity);
@@ -155,6 +158,8 @@ public class UserServiceIMPL implements UserService {
         UsersEntity existingUser  = userRepository.findByUserid(userDTO.getUserid())
                 .orElseThrow(() -> new RuntimeException("Khong tim thay du lieu User"));
         modelMapper.map(userDTO, existingUser);
+        String hashedPassword =   BCrypt.hashpw(existingUser.getPassword(), BCrypt.gensalt());
+        existingUser.setPassword(hashedPassword);
         userRepository.save(existingUser);
     }
 }

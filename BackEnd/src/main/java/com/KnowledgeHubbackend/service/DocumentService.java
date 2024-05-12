@@ -2,6 +2,7 @@ package com.KnowledgeHubbackend.service;
 
 import com.KnowledgeHubbackend.dto.AuthorDTO;
 import com.KnowledgeHubbackend.dto.DocumentDTO;
+import com.KnowledgeHubbackend.dto.UsersDTO;
 import com.KnowledgeHubbackend.entity.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +17,6 @@ public interface DocumentService {
     List<DocumentDTO> getAllByViewsOrderByAsc(Pageable pageable);
     List<DocumentDTO> getAllByCountDownloadOrderByDesc(Pageable pageable);
     List<DocumentDTO> getAllByCountDownloadOrderByAsc(Pageable pageable);
-
     List<DocumentDTO> getByDocumentname(String documentname,Pageable pageable);
     List<DocumentDTO> getByCategoryid(Integer categoryid, Pageable pageable);
     List<DocumentDTO> getByAuthorID(Integer authorID, Pageable pageable);
@@ -26,7 +26,7 @@ public interface DocumentService {
     int totalItem();
     DocumentDTO getByDocumentid(Integer documentid);
     void deleteByDocumentid(Integer documentid)throws IOException;
-    void createDocument(DocumentDTO documentDTO, MultipartFile file) throws IOException;
+    void createDocument(DocumentDTO documentDTO, MultipartFile file, String userid) throws IOException;
 
-    void updateDocument(DocumentDTO documentDTO,MultipartFile file)throws IOException;
+    void updateDocument(DocumentDTO documentDTO,MultipartFile file, String  userid)throws IOException;
 }

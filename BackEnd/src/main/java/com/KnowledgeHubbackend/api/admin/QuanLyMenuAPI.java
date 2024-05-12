@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quan-ly-danh-muc")
+@RequestMapping("/admin/quan-ly-danh-muc")
 public class QuanLyMenuAPI {
     @Autowired
     private final MenuService menuService;

@@ -3,6 +3,7 @@ package com.KnowledgeHubbackend.service.IMPL;
 import com.KnowledgeHubbackend.dto.AuthorDTO;
 import com.KnowledgeHubbackend.dto.PublishersDTO;
 import com.KnowledgeHubbackend.entity.AuthorEntity;
+import com.KnowledgeHubbackend.entity.HistoryEntity;
 import com.KnowledgeHubbackend.entity.PublishersEntity;
 import com.KnowledgeHubbackend.repository.AuthorRepository;
 import com.KnowledgeHubbackend.service.AuthorService;
@@ -80,6 +81,7 @@ public class AuthorServiceIMPL implements AuthorService {
         if (authorDTO != null) {
             AuthorEntity author =  modelMapper.map(authorDTO, AuthorEntity.class);
             if (author != null ) {
+
                 authorRepository.save(author);
             } else {
                 throw new RuntimeException("Không lấy được dữ liệu!");

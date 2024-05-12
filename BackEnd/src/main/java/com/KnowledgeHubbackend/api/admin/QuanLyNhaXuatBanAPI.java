@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/quan-ly-nha-xuat-ban")
+@RequestMapping("/admin/quan-ly-nha-xuat-ban")
 public class QuanLyNhaXuatBanAPI {
     @Autowired
     private final PublishersService publishersService;
