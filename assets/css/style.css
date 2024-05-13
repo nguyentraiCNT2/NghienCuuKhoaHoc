@@ -1,5 +1,7 @@
+
+
 body {
-    background-color: antiquewhite;
+    background-color: #23262F;
 }
 
 * {
@@ -9,26 +11,12 @@ body {
 }
 
 
-.btn:hover{
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 600;
-    font-family: Josefin sans;
-    color: #fff;
-    background-color: #4dd3dd;
-    transition: all 0.3s ease-in-out;
-    min-width: 100px
-}
 .btn {
     display: inline-block;
     padding: 10px 20px;
     /* border: 1px solid #ccc; */
-    background-color: aliceblue;
-    color: rgb(77, 162, 236);
+    background-color: rgb(56 60 69);
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
@@ -38,32 +26,23 @@ body {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
+.btn:hover{
+    cursor: pointer;
+    color: rgb(56 60 69);
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@font-face {
-        font-family: "monument";
-        src: url('fonts/monumentextended-regular-webfont.woff2') format('woff2'),
-        url('fonts/monumentextended-regular-webfont.woff') format('woff');
-        font-weight: norm   al;
-        font-style: normal;
-        }
+.btn-tables.active {
+    cursor: pointer;
+    color: rgb(56 60 69);
+    background-color: #fff;
+}
 
-@font-face {
-            font-family: "camel";
-            src: url('fonts/camel.woff2') format('woff2'),
-            url('fonts/camel.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
 
-@font-face {
-            font-family: "night";
-            src: url('fonts/tuesdaynight-regular-webfont.woff2') format('woff2'),
-             url('fonts/tuesdaynight-regular-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            }
-    
+#home-admin {
+    /* overflow: hidden; */
+}
 
 #home-admin .header {
     width: 100%;
@@ -71,10 +50,10 @@ body {
 }
 
 .header__container {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: #191C23;
     padding: 8px 40px;
     border-radius: 20px;
     box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.4);
@@ -89,6 +68,7 @@ body {
     display: flex;
     width: 180px;
     justify-content: center;
+    border-radius: 20px;
 }
 
 .header__user {
@@ -107,14 +87,14 @@ body {
     margin-right: 20px;
 }
 
-.user__username {
-    
+.user__avarar i,
+.user__username a  {
+    color: #fff;
     
 }
 
 .user__username a {
     text-decoration: none;
-    color: rgb(77, 162, 236);
     font-size: 20px;
     font-weight: 600;
     font-family: Josefin sans;
@@ -122,13 +102,69 @@ body {
 
 
 #home-admin .content__menu {
-    background-color: rgb(255, 255, 255);
+    background-color: #191C23;
     border-radius: 20px;
     box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.4);
-    padding: 8px;
-
+    padding: 20px 20px;
+    height: 78vh;
+    overflow-y: auto !important;
+    margin-bottom: 20px;
 }
 
+.content__menu::-webkit-scrollbar {
+    width: 0px; /* Chiều rộng của thanh cuộn */
+}
+
+
+
+#home-admin .content__menu:first-child {
+
+}
+.content__menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+#home-admin .content__data {
+    background-color: #191C23;
+    border-radius: 20px;
+    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.4);
+    padding: 0 30px;
+    height: 78vh;
+    margin-bottom: 20px;
+    overflow-y: auto ;
+}
+
+.content__data::-webkit-scrollbar {
+    width: 0px; /* Chiều rộng của thanh cuộn */
+}
+
+.content__data-item {
+    height: 112px;
+    background-color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+
+.content__data-item-header {
+    border-bottom: 1px solid #ccc;
+    height: 36px;
+    padding: 8px;
+    text-align: center;
+}
+
+.content__data-item-value {
+    height: 76px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -140,8 +176,14 @@ body {
         max-width: 60px;
         font-size: 12px;
     }
+
     .header__container .logo img {
         height: 40px;
+    }
+
+    .header__container .logo a {
+        display: flex;
+        justify-content: center;
     }
     
     .header__container .btn-stt {
