@@ -16,11 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/admin/quan-ly-tai-lieu")
-public class QuanLyTaiLieuAPI {
+public class QuanlydocumentAPI {
     @Autowired
     private final DocumentService documentService;
 
-    public QuanLyTaiLieuAPI(DocumentService documentService) {
+    public QuanlydocumentAPI(DocumentService documentService) {
         this.documentService = documentService;
     }
 

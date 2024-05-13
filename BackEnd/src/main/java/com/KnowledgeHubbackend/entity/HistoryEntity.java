@@ -22,7 +22,8 @@ public class HistoryEntity {
     private Date dateupdate;
     @Column(name = "description",columnDefinition = "NVARCHAR(MAX)")
    private String description;
-
+    @Column(name = "status")
+    private Boolean status;
     public Integer getHistoryid() {
         return historyid;
     }
@@ -61,5 +62,13 @@ public class HistoryEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

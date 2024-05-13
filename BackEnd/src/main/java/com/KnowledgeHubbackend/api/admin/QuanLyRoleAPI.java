@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/quan-ly-quyen-han")
-public class QuanLyQuyenHanAPI {
+public class QuanLyRoleAPI {
     @Autowired
     private final RolesService  rolesService;
 
-    public QuanLyQuyenHanAPI(RolesService rolesService) {
+    public QuanLyRoleAPI(RolesService rolesService) {
         this.rolesService = rolesService;
     }
     @GetMapping("/hien-thi-tat-ca")

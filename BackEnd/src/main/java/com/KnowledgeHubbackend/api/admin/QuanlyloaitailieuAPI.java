@@ -1,9 +1,7 @@
 package com.KnowledgeHubbackend.api.admin;
 
 import com.KnowledgeHubbackend.api.output.CategoryOutPut;
-import com.KnowledgeHubbackend.api.output.MenuOutPut;
 import com.KnowledgeHubbackend.dto.CategoryDTO;
-import com.KnowledgeHubbackend.dto.MenuDTO;
 import com.KnowledgeHubbackend.service.CategoryService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +11,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
-@RequestMapping("/admin/quan-ly-loai-tai-lieu")
-public class QuanLyLoaiTaiLieuAPI {
+@RequestMapping("/admin/quan-li-loai-tai-lieu")
+public class QuanlyloaitailieuAPI {
     @Autowired
     private final CategoryService categoryService;
 
 
-    public QuanLyLoaiTaiLieuAPI(CategoryService categoryService) {
+    public QuanlyloaitailieuAPI(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -45,7 +42,7 @@ public class QuanLyLoaiTaiLieuAPI {
         return result;
     }
     @GetMapping("/hien-thi-theo-ten-loai-tai-lieu/{categoryname}")
-    public CategoryOutPut getByCategoryname(@PathVariable String categoryname,@RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
+    public CategoryOutPut getByCategoryname(@PathVariable String categoryname, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
         CategoryOutPut result = new CategoryOutPut();
         result.setPage(page);
         Pageable pageable =  PageRequest.of(page - 1, limit);

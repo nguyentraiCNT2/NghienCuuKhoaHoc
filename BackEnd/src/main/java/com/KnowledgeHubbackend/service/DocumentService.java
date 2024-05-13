@@ -25,6 +25,7 @@ public interface DocumentService {
     List<DocumentDTO> getBySupplierid(Integer supplierid, Pageable pageable);
     int totalItem();
     DocumentDTO getByDocumentid(Integer documentid);
+    DocumentDTO getByDocumentidaddhistory(Integer documentid, String userid);
     void deleteByDocumentid(Integer documentid)throws IOException;
     void createDocument(DocumentDTO documentDTO, MultipartFile file, String userid) throws IOException;
 

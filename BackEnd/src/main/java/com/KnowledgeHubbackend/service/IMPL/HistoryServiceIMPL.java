@@ -52,8 +52,11 @@ private final DocumentRepository documentRepository;
         List<HistoryEntity> historyEntities = historyRepository.findByUserid(users,pageable);
         for (HistoryEntity item : historyEntities
         ) {
-            HistoryDTO dto = modelMapper.map(item, HistoryDTO.class);
-            results.add(dto);
+            if (item.getStatus()==true ){
+                HistoryDTO dto = modelMapper.map(item, HistoryDTO.class);
+                results.add(dto);
+            }
+
         }
         return results;
     }

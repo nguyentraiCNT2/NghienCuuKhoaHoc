@@ -1,10 +1,7 @@
 package com.KnowledgeHubbackend.api.admin;
 
 import com.KnowledgeHubbackend.api.output.MenuOutPut;
-import com.KnowledgeHubbackend.api.output.RolesOutPut;
 import com.KnowledgeHubbackend.dto.MenuDTO;
-import com.KnowledgeHubbackend.dto.RolesDTO;
-import com.KnowledgeHubbackend.dto.UsersDTO;
 import com.KnowledgeHubbackend.service.MenuService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
-@RequestMapping("/admin/quan-ly-danh-muc")
-public class QuanLyMenuAPI {
+@RequestMapping("/admin/quan-li-danh-muc")
+public class MenuAPI {
     @Autowired
     private final MenuService menuService;
 
-    public QuanLyMenuAPI(MenuService menuService) {
+    public MenuAPI(MenuService menuService) {
         this.menuService = menuService;
     }
 
@@ -45,7 +41,7 @@ public class QuanLyMenuAPI {
         return result;
     }
     @GetMapping("/hien-thi-theo-ten-danh-muc/{menuname}")
-    public MenuOutPut getByMenuname(@PathVariable String menuname,@RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
+    public MenuOutPut getByMenuname(@PathVariable String menuname, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
         MenuOutPut result = new MenuOutPut();
         result.setPage(page);
         Pageable pageable =  PageRequest.of(page - 1, limit);

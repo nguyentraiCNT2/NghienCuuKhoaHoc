@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/thong-bao-tai-lieu")
-public class ThongBaoTaiLieuAPI {
+public class ThongbaoAPI {
     @Autowired
     private final NotificationsService notificationsService;
-    public ThongBaoTaiLieuAPI(NotificationsService notificationsService) {
+    public ThongbaoAPI(NotificationsService notificationsService) {
         this.notificationsService = notificationsService;
     }
     @GetMapping("/hien-thi-tat-ca")

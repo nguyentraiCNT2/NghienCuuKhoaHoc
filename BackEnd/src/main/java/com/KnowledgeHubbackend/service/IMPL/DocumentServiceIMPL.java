@@ -218,6 +218,30 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
+    public DocumentDTO getByDocumentidaddhistory(Integer documentid, String userid) {
+        try {
+            DocumentEntity document = documentRepository.findByDocumentid(documentid)
+                    .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentid));
+            UsersEntity users = userRepository.findByUserid(userid).orElseThrow(null);
+            String description = users.getUsername()+"Đã xem tài liệu "+document.getDocumentname();
+            LocalDate currentDate = LocalDate.now();
+            Date currentSqlDate = Date.valueOf(currentDate);
+            HistoryEntity history = new HistoryEntity();
+            history.setDescription(description);
+            history.setDocumentid(document);
+            history.setUserid(users);
+            history.setDateupdate(currentSqlDate);
+            history.setStatus(true);
+            historyRepository.save(history);
+            return modelMapper.map(document, DocumentDTO.class);
+        } catch (EntityNotFoundException ex) {
+            throw ex;
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while fetching data by ID", e);
+        }
+    }
+
+    @Override
     public void deleteByDocumentid(Integer documentid)throws IOException {
         DocumentEntity existingDocument = documentRepository.findByDocumentid(documentid)
                 .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentid));
@@ -256,6 +280,7 @@ public class DocumentServiceIMPL implements DocumentService {
             historyEntity.setUserid(users);
             historyEntity.setDateupdate(currentSqlDate);
             historyEntity.setDescription(description);
+            historyEntity.setStatus(false);
             historyRepository.save(historyEntity);
             NotificationsEntity notificationsEntity = new NotificationsEntity();
             String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
@@ -316,6 +341,7 @@ public class DocumentServiceIMPL implements DocumentService {
                 historyEntity.setUserid(users);
                 historyEntity.setDateupdate(currentSqlDate);
                 historyEntity.setDescription(description);
+                historyEntity.setStatus(false);
                 historyRepository.save(historyEntity);
                 NotificationsEntity notificationsEntity = new NotificationsEntity();
                 String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
@@ -340,6 +366,7 @@ public class DocumentServiceIMPL implements DocumentService {
                 historyEntity.setUserid(users);
                 historyEntity.setDateupdate(currentSqlDate);
                 historyEntity.setDescription(description);
+                historyEntity.setStatus(false);
                 historyRepository.save(historyEntity);
                 NotificationsEntity notificationsEntity = new NotificationsEntity();
                 String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()

@@ -8,6 +8,7 @@ public class HistoryDTO {
     private DocumentDTO documentid;
     private Date dateupdate;
     private String description;
+    private Boolean status;
     public Integer getHistoryid() {
         return historyid;
     }
@@ -46,5 +47,13 @@ public class HistoryDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

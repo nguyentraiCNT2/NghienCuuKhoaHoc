@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/quan-ly-nha-cung-cap")
-public class QuanLyNhaCungCapAPI {
+public class QuanlynhacungcapAPI {
     @Autowired
     private final SuppliersService suppliersService;
 
 
-    public QuanLyNhaCungCapAPI(SuppliersService suppliersService) {
+    public QuanlynhacungcapAPI(SuppliersService suppliersService) {
         this.suppliersService = suppliersService;
     }
     @GetMapping("/hien-thi-tat-ca")

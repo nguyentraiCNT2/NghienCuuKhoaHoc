@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/quan-ly-nguoi-dung-admin")
-public class QuanLyNguoiDungAPI {
+public class QuanlyuserAPI {
     @Autowired
     private final UserService userService;
 
-    public QuanLyNguoiDungAPI(UserService userService) {
+    public QuanlyuserAPI(UserService userService) {
         this.userService = userService;
     }
 
