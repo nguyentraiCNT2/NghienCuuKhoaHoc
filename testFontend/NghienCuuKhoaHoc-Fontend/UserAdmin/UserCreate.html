@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm mới tài liệu</title>
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link rel="stylesheet" href="/assets/css/button.css">
+    <link rel="stylesheet" href="/assets/css/lable.css">
+    <link rel="stylesheet" href="/assets/fontawesome-free-6.5.2-web/css/all.css">
+    <link rel="stylesheet" href="/assets/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/create.css">
+    <link rel="stylesheet" href="/assets/css/CreateUser.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link icon -->
+</head>
+<body>
+    <main id="home-admin">
+        <header class="header">
+            <div class="header__container grid wide">
+                <div class="logo m-1 c-1">
+                    <a href="index.html">
+                        <img src="/assets/images/LightLogo.png" alt="logo">                        
+                    </a>
+                </div>
+                <div class="c-3 m-4 l-2">
+                    <!-- stt: Statistical - Thống kê-->
+                  
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </span>
+                        <span class="text">Thống kê</span>
+                    </a>
+                </div>
+                <div class="c-o-7 m-o-5 l-o-7 header__user">  
+                    <button class="button">
+                        <svg viewBox="0 0 448 512" class="bell"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
+                     </button>                
+                    <div class="user__avarar">
+                        <a href="#">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="user__username">
+                        <a href="#">
+                            UserName
+                        </a>   
+                    </div>  
+                </div>
+            </div>
+        </header>
+
+        <div class="content grid wide">
+            <div class="row">
+                <div class="col c-2-4 m-3 l-2-4">
+                    <div class="content__menu" data="content-menu">
+                       <a class="btn" href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <span class="text">người dùng</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <span class="text">Quyền hạn </span>
+                    </a>
+                    <a class="btn active">
+                        <span class="icon">
+                            <i class="fa-solid fa-file "></i>
+                        </span>
+                        <span class="text">tài liệu</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-list"></i>
+                        </span>
+                        <span class="text">loại tài liệu</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                        </span>
+                        <span class="text">menu</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                        <span class="text">Lượt xem</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </span>
+                        <span class="text">nhà cung cấp</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-book-atlas"></i>
+                        </span>
+                        <span class="text">nhà xuất bản</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-download"></i>
+                        </span>
+                        <span class="text">lượt tải</span>
+                    </a>
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </span>
+                        <span class="text">nhật ký hoạt động </span>
+                    </a>
+                    
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </span>
+                        <span class="text">tác giả</span>
+                    </a>
+                       
+                    </div>
+                </div>
+                <div class="col c-9-6 m-9 l-9-6">
+                    <div class="content__data" data="content-data">
+                    
+                            <a href="#" class="btn-shine">Thêm mới người dùng
+                            </a>
+                      
+                            <a class="btn-create" href="/UserAdmin/UserList.html">
+                                <span class="icon">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </span>
+                                <span class="text">Quay lại danh sách</span>
+                            </a>   
+                        <br>
+                        <br>
+                        <hr/>
+                        <div class="content__data-stt" data="statistical">
+                            <div class="group">
+                                <Label class="lb_name">Tên Đăng nhập</Label>
+                              <input class="input" type="text" placeholder="Nhập tên đăng nhập">
+                              </div>
+                              <div class="group">
+                                <Label class="lb_name">Mật khẩu</Label>
+                              <input class="input" type="text" placeholder="Nhập mật khẩu">
+                              </div>       
+                              <div class="group">
+                                <Label class="lb_name">Email</Label>
+                              <input class="input" type="text" placeholder="Nhập email đăng ký">
+                              </div>          
+                              <div class="group">
+                                <Label class="lb_name">Số điện thoại</Label>
+                              <input class="input" type="text" placeholder="Nhập số điện thoại đăng ký">
+                              </div>             
+                              <div class="group">
+                                <Label class="lb_name">Ngày sinh</Label>
+                              <input class="input_date" type="date" >
+                              <div class="checkbox_gender_group">
+                             
+                                <input class="checkbox_gender" type="checkbox" placeholder="Nhập tên tài liệu">
+                                <Label class="lb_name_checkbox">Nam</Label>
+
+                                <input class="checkbox_gender" type="checkbox" placeholder="Nhập tên tài liệu">
+                                <Label class="lb_name_checkbox">Nữ</Label>
+                              </div>
+                              </div>             
+                              
+                              <div class="group__select">
+                                <div class="group_category">
+                                    <Label class="lb_category">Quyền hạn</Label>
+                                    <select name="" id="" class="select__category menu_document" >
+                                        <option value="">Chọn quyền hạn </option>
+                                        <option value="">User</option>
+                                        <option value="">CTV</option>
+                                        <option value="">ADMIN</option>
+                                    </select>
+                                  </div>
+                              </div>
+                           
+                            </div>
+                            <div class="group__select">
+                              <div class="group_category">
+                                <a class="btn-create_form">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </span>
+                                    <span class="text">Thêm mới</span>
+                                </a>
+                                <a class="btn-create_reset">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-rotate-right"></i>
+                                    </span>
+                                    <span class="text">reset</span>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>    
+</body>
+</html>

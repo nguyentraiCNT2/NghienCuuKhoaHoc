@@ -3,10 +3,7 @@ package com.KnowledgeHubbackend.service.IMPL;
 import com.KnowledgeHubbackend.dto.DocumentDTO;
 import com.KnowledgeHubbackend.dto.HistoryDTO;
 import com.KnowledgeHubbackend.dto.LoadsDTO;
-import com.KnowledgeHubbackend.entity.DocumentEntity;
-import com.KnowledgeHubbackend.entity.HistoryEntity;
-import com.KnowledgeHubbackend.entity.LoadsEntity;
-import com.KnowledgeHubbackend.entity.UsersEntity;
+import com.KnowledgeHubbackend.entity.*;
 import com.KnowledgeHubbackend.repository.DocumentRepository;
 import com.KnowledgeHubbackend.repository.DownloaderRepository;
 import com.KnowledgeHubbackend.repository.LoadsRepository;
@@ -86,7 +83,7 @@ public class LoadServiceIMPL implements LoadService {
     public List<LoadsDTO> getByDocumentid(Integer documentid, Pageable pageable) {
         List<LoadsDTO> results = new ArrayList<>();
         DocumentEntity document = documentRepository.findByDocumentid(documentid).orElse(null);
-        List<LoadsEntity> loadsEntities = loadsRepository.findByDocumentid(document, pageable);
+        List<LoadsEntity> loadsEntities = loadsRepository.findByDocumentID(document, pageable);
         for (LoadsEntity item : loadsEntities
         ) {
             LoadsDTO dto = modelMapper.map(item, LoadsDTO.class);
@@ -106,13 +103,16 @@ public class LoadServiceIMPL implements LoadService {
             loads.setUserid(users);
             loads.setDocumentID(document);
             loads.setDateDown(currentSqlDate);
-            loadsRepository.save(loads);
-
+        LoadsEntity saveLoads = loadsRepository.save(loads);
+            DownloaderEntity downloaderEntity = new DownloaderEntity();
+            downloaderEntity.setLoadid(saveLoads);
+            downloaderEntity.setDateDown(currentSqlDate);
+            downloaderEntity.setDownEmail(users.getEmail());
+            downloaderEntity.setDownName(users.getUsername());
+            downloaderEntity.setDownPhone(users.getPhone());
+            downloaderRepository.save(downloaderEntity);
         }
     }
-
-
-
     @Override
     public void delete(Integer id) {
     loadsRepository.deleteByLoadid(id);

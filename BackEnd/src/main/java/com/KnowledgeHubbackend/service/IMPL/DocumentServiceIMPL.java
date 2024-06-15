@@ -1,10 +1,14 @@
 package com.KnowledgeHubbackend.service.IMPL;
 
+import com.KnowledgeHubbackend.algorithm.DocToPdf;
 import com.KnowledgeHubbackend.dto.*;
 import com.KnowledgeHubbackend.entity.*;
 import com.KnowledgeHubbackend.repository.*;
 import com.KnowledgeHubbackend.service.DocumentService;
 import jakarta.persistence.EntityNotFoundException;
+import net.coobird.thumbnailator.Thumbnails;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +16,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -24,8 +31,9 @@ import java.util.UUID;
 
 @Service
 public class DocumentServiceIMPL implements DocumentService {
-    @Value("D:/KnowledgeHub/uploaddocument/")
-    // Đường dẫn để lưu ảnh, có thể đặt trong file properties/application.yml
+    @Value("D:/KnowledgeHub/uploaddocument/Document/")
+    private String documentSavePath;
+    @Value("D:/KnowledgeHub/uploaddocument/images/")
     private String imageSavePath;
     @Autowired
     private final DocumentRepository documentRepository;
@@ -47,6 +55,7 @@ public class DocumentServiceIMPL implements DocumentService {
     private final UserRepository userRepository;
     @Autowired
     private final NotificationsRepository notificationsRepository;
+
     public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, MenuRepository menuRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository) {
         this.documentRepository = documentRepository;
         this.modelMapper = modelMapper;
@@ -65,9 +74,9 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getAll(Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         List<DocumentEntity> documentEntities = documentRepository.findAll(pageable).getContent();
-        for (DocumentEntity item: documentEntities
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -77,9 +86,9 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getAllByViewsOrderByDesc(Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         List<DocumentEntity> documentEntities = documentRepository.findAllByViewsOrderByDesc(pageable);
-        for (DocumentEntity item: documentEntities
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -89,10 +98,10 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getAllByViewsOrderByAsc(Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         List<DocumentEntity> documentEntities = documentRepository.findAllByViewsOrderByAsc(pageable);
-        for (DocumentEntity item: documentEntities
+        for (DocumentEntity item : documentEntities
         ) {
 
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -102,9 +111,9 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getAllByCountDownloadOrderByDesc(Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         List<DocumentEntity> documentEntities = documentRepository.findAllByCountDownloadOrderByDesc(pageable);
-        for (DocumentEntity item: documentEntities
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -114,9 +123,9 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getAllByCountDownloadOrderByAsc(Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         List<DocumentEntity> documentEntities = documentRepository.findAllByCountDownloadOrderByAsc(pageable);
-        for (DocumentEntity item: documentEntities
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -125,10 +134,10 @@ public class DocumentServiceIMPL implements DocumentService {
     @Override
     public List<DocumentDTO> getByDocumentname(String documentname, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
-        List<DocumentEntity> documentEntities = documentRepository.findByDocumentname(documentname,pageable);
-        for (DocumentEntity item: documentEntities
+        List<DocumentEntity> documentEntities = documentRepository.findByDocumentname(documentname, pageable);
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -138,10 +147,10 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getByCategoryid(Integer categoryid, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         CategoryEntity category = categoryRepository.findByCategoryid(categoryid).orElseThrow(null);
-        List<DocumentEntity> documentEntities = documentRepository.findByCategoryid(category,pageable);
-        for (DocumentEntity item: documentEntities
+        List<DocumentEntity> documentEntities = documentRepository.findByCategoryid(category, pageable);
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -151,10 +160,10 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getByAuthorID(Integer authorID, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         AuthorEntity author = authorRepository.findByAuthorid(authorID).orElseThrow(null);
-        List<DocumentEntity> documentEntities = documentRepository.findByAuthorID(author,pageable);
-        for (DocumentEntity item: documentEntities
+        List<DocumentEntity> documentEntities = documentRepository.findByAuthorID(author, pageable);
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -164,10 +173,10 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getByPublisherid(Integer publisherid, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         PublishersEntity publishers = publishersRepository.findByPublisherid(publisherid).orElseThrow(null);
-        List<DocumentEntity> documentEntities = documentRepository.findByPublisherid(publishers,pageable);
-        for (DocumentEntity item: documentEntities
+        List<DocumentEntity> documentEntities = documentRepository.findByPublisherid(publishers, pageable);
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -177,10 +186,10 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getByMenuid(Integer menuid, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         MenuEntity menu = menuRepository.findByMenuid(menuid).orElseThrow(null);
-        List<DocumentEntity> documentEntities = documentRepository.findByMenuid(menu,pageable);
-        for (DocumentEntity item: documentEntities
+        List<DocumentEntity> documentEntities = documentRepository.findByMenuid(menu, pageable);
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -190,10 +199,10 @@ public class DocumentServiceIMPL implements DocumentService {
     public List<DocumentDTO> getBySupplierid(Integer supplierid, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         SuppliersEntity suppliers = suppliersRepository.findBySupplierid(supplierid).orElseThrow(null);
-        List<DocumentEntity> documentEntities = documentRepository.findBySupplierid(suppliers,pageable);
-        for (DocumentEntity item: documentEntities
+        List<DocumentEntity> documentEntities = documentRepository.findBySupplierid(suppliers, pageable);
+        for (DocumentEntity item : documentEntities
         ) {
-            DocumentDTO dto = modelMapper.map(item,DocumentDTO.class);
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
             results.add(dto);
         }
         return results;
@@ -223,7 +232,7 @@ public class DocumentServiceIMPL implements DocumentService {
             DocumentEntity document = documentRepository.findByDocumentid(documentid)
                     .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentid));
             UsersEntity users = userRepository.findByUserid(userid).orElseThrow(null);
-            String description = users.getUsername()+"Đã xem tài liệu "+document.getDocumentname();
+            String description = users.getUsername() + "Đã xem tài liệu " + document.getDocumentname();
             LocalDate currentDate = LocalDate.now();
             Date currentSqlDate = Date.valueOf(currentDate);
             HistoryEntity history = new HistoryEntity();
@@ -242,7 +251,7 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
-    public void deleteByDocumentid(Integer documentid)throws IOException {
+    public void deleteByDocumentid(Integer documentid) throws IOException {
         DocumentEntity existingDocument = documentRepository.findByDocumentid(documentid)
                 .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentid));
         if (existingDocument.getFileURL() != null && !existingDocument.getFileURL().isEmpty()) {
@@ -268,13 +277,22 @@ public class DocumentServiceIMPL implements DocumentService {
             document.setSupplierid(suppliers);
             document.setPublisherid(publishers);
             String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-            String filePath = imageSavePath + filename;
+            String filePath = documentSavePath + filename;
             Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
+            // Chuyển đổi file từ doc sang pdf
+            String pdfFilename = UUID.randomUUID().toString() + ".pdf";
+            String pdfFilePath = documentSavePath + pdfFilename;
+             DocToPdf.convertDocToPdf(file.getInputStream(), pdfFilePath);
             document.setFileURL(filename);
-          DocumentEntity saveDocument =  documentRepository.save(document);
+            // Chụp ảnh trang đầu tiên của file PDF
+            String thumbnailFilename = UUID.randomUUID().toString() + "_thumbnail.jpg";
+            String thumbnailPath = imageSavePath + thumbnailFilename;
+            createPdfThumbnail(filePath, thumbnailPath);
+            document.setDocumentthumbnail(thumbnailFilename);
+            DocumentEntity saveDocument = documentRepository.save(document);
             LocalDate currentDate = LocalDate.now();
             Date currentSqlDate = Date.valueOf(currentDate);
-            String description=users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname();
+            String description = users.getUsername() + " Đã thêm thông tin tài liệu có tên " + saveDocument.getDocumentname();
             HistoryEntity historyEntity = new HistoryEntity();
             historyEntity.setDocumentid(saveDocument);
             historyEntity.setUserid(users);
@@ -283,8 +301,8 @@ public class DocumentServiceIMPL implements DocumentService {
             historyEntity.setStatus(false);
             historyRepository.save(historyEntity);
             NotificationsEntity notificationsEntity = new NotificationsEntity();
-            String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
-                    +"Đang chờ xác nhận!";
+            String descriptionnotification = users.getUsername() + " Đã thêm thông tin tài liệu có tên " + saveDocument.getDocumentname()
+                    + "Đang chờ xác nhận!";
             notificationsEntity.setDocumentid(saveDocument);
             notificationsEntity.setUserid(users);
             notificationsEntity.setDateadd(currentSqlDate);
@@ -292,9 +310,8 @@ public class DocumentServiceIMPL implements DocumentService {
             notificationsRepository.save(notificationsEntity);
         }
     }
-
     @Override
-    public void updateDocument(DocumentDTO documentDTO,MultipartFile file, String userid) throws IOException {
+    public void updateDocument(DocumentDTO documentDTO, MultipartFile file, String userid) throws IOException {
         try {
             UsersEntity users = userRepository.findByUserid(userid).orElse(null);
             DocumentEntity existingDocument = documentRepository.findByDocumentid(documentDTO.getDocumentid())
@@ -307,23 +324,21 @@ public class DocumentServiceIMPL implements DocumentService {
             String fileurl = existingDocument.getFileURL();
             Integer Views = existingDocument.getViews();
             Integer countDown = existingDocument.getCountDownload();
-            CategoryDTO categoryDTO = modelMapper.map(category,CategoryDTO.class);
-            SuppliersDTO suppliersDTO = modelMapper.map(suppliers,SuppliersDTO.class);
-            PublishersDTO publishersDTO = modelMapper.map(publishers,PublishersDTO.class);
-            AuthorDTO authorDTO = modelMapper.map(author,AuthorDTO.class);
-            MenuDTO menuDTO = modelMapper.map(menu,MenuDTO.class);
+            CategoryDTO categoryDTO = modelMapper.map(category, CategoryDTO.class);
+            SuppliersDTO suppliersDTO = modelMapper.map(suppliers, SuppliersDTO.class);
+            PublishersDTO publishersDTO = modelMapper.map(publishers, PublishersDTO.class);
+            AuthorDTO authorDTO = modelMapper.map(author, AuthorDTO.class);
+            MenuDTO menuDTO = modelMapper.map(menu, MenuDTO.class);
             documentDTO.setPublisherid(publishersDTO);
             documentDTO.setSupplierid(suppliersDTO);
             documentDTO.setAuthorID(authorDTO);
             documentDTO.setMenuid(menuDTO);
             documentDTO.setCategoryid(categoryDTO);
-            if (!file.isEmpty()){
-                // Xóa tệp tin cũ nếu có
+            if (!file.isEmpty()) {
                 if (existingDocument.getFileURL() != null && !existingDocument.getFileURL().isEmpty()) {
                     String oldFilePath = imageSavePath + existingDocument.getFileURL();
                     Files.deleteIfExists(Paths.get(oldFilePath));
                 }
-
                 modelMapper.map(documentDTO, existingDocument);
                 String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
                 String filePath = imageSavePath + filename;
@@ -332,10 +347,10 @@ public class DocumentServiceIMPL implements DocumentService {
 
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);
-                DocumentEntity saveDocument =  documentRepository.save(existingDocument);
+                DocumentEntity saveDocument = documentRepository.save(existingDocument);
                 LocalDate currentDate = LocalDate.now();
                 Date currentSqlDate = Date.valueOf(currentDate);
-                String description=users.getUsername()+" Đã sửa thông tin tài liệu "+saveDocument.getDocumentname();
+                String description = users.getUsername() + " Đã sửa thông tin tài liệu " + saveDocument.getDocumentname();
                 HistoryEntity historyEntity = new HistoryEntity();
                 historyEntity.setDocumentid(saveDocument);
                 historyEntity.setUserid(users);
@@ -344,23 +359,22 @@ public class DocumentServiceIMPL implements DocumentService {
                 historyEntity.setStatus(false);
                 historyRepository.save(historyEntity);
                 NotificationsEntity notificationsEntity = new NotificationsEntity();
-                String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
-                        +"Đang chờ xác nhận!";
+                String descriptionnotification = users.getUsername() + " Đã thêm thông tin tài liệu có tên " + saveDocument.getDocumentname()
+                        + "Đang chờ xác nhận!";
                 notificationsEntity.setDocumentid(saveDocument);
                 notificationsEntity.setUserid(users);
                 notificationsEntity.setDateadd(currentSqlDate);
                 notificationsEntity.setDescription(descriptionnotification);
                 notificationsRepository.save(notificationsEntity);
-            }
-            else {
+            } else {
                 modelMapper.map(documentDTO, existingDocument);
                 existingDocument.setFileURL(fileurl);
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);
-                DocumentEntity saveDocument =    documentRepository.save(existingDocument);
+                DocumentEntity saveDocument = documentRepository.save(existingDocument);
                 LocalDate currentDate = LocalDate.now();
                 Date currentSqlDate = Date.valueOf(currentDate);
-                String description=users.getUsername()+" Đã sửa thông tin tài liệu "+saveDocument.getDocumentname();
+                String description = users.getUsername() + " Đã sửa thông tin tài liệu " + saveDocument.getDocumentname();
                 HistoryEntity historyEntity = new HistoryEntity();
                 historyEntity.setDocumentid(saveDocument);
                 historyEntity.setUserid(users);
@@ -369,17 +383,30 @@ public class DocumentServiceIMPL implements DocumentService {
                 historyEntity.setStatus(false);
                 historyRepository.save(historyEntity);
                 NotificationsEntity notificationsEntity = new NotificationsEntity();
-                String descriptionnotification =users.getUsername()+" Đã thêm thông tin tài liệu có tên "+saveDocument.getDocumentname()
-                        +"Đang chờ xác nhận!";
+                String descriptionnotification = users.getUsername() + " Đã thêm thông tin tài liệu có tên " + saveDocument.getDocumentname()
+                        + "Đang chờ xác nhận!";
                 notificationsEntity.setDocumentid(saveDocument);
                 notificationsEntity.setUserid(users);
                 notificationsEntity.setDateadd(currentSqlDate);
                 notificationsEntity.setDescription(descriptionnotification);
                 notificationsRepository.save(notificationsEntity);
             }
-        }catch (Exception e){
-        throw  new RuntimeException(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
 
+    }
+
+
+    private void createPdfThumbnail(String filePath, String thumbnailPath) throws IOException {
+        try (PDDocument document = PDDocument.load(new File(filePath))) {
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            BufferedImage image = pdfRenderer.renderImageWithDPI(0, 300); // render first page at 300 DPI
+
+            try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+                Thumbnails.of(image).size(800, 1200).outputFormat("jpg").toOutputStream(baos);
+                Files.write(Paths.get(thumbnailPath), baos.toByteArray());
+            }
+        }
     }
 }

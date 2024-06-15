@@ -4,7 +4,7 @@ public class MenuDTO {
     private Integer menuid;
     private String menuName;
     private String menuLink;
-    private Integer parentID;
+    private MenuDTO parentID;
 
     public Integer getMenuid() {
         return menuid;
@@ -30,11 +30,11 @@ public class MenuDTO {
         this.menuLink = menuLink;
     }
 
-    public Integer getParentID() {
+    public MenuDTO getParentID() {
         return parentID;
     }
 
-    public void setParentID(Integer parentID) {
+    public void setParentID(MenuDTO parentID) {
         this.parentID = parentID;
     }
 }

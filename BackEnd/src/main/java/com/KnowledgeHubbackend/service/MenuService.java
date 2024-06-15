@@ -11,6 +11,7 @@ import java.util.List;
 public interface MenuService {
     List<MenuDTO> getAll(Pageable pageable);
     List<MenuDTO> getByMenuName(String menuName,Pageable pageable);
+    List<MenuDTO> getByParentID(Integer parentID,Pageable pageable);
     int totalItem();
     MenuDTO getByMenuid(Integer menuid);
     void deleteByMenuid(Integer menuid);

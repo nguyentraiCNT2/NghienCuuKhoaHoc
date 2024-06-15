@@ -1,0 +1,231 @@
+.btn-edit {
+    width: 120px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #5491fa;
+    color: #000;
+  margin-bottom: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn-edit:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+    background:#1e70ff ;
+  }
+  
+  .btn-edit .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn-edit .text {
+    transform: translateX(55px);
+  }
+  
+  .btn-edit:hover .icon {
+    width: 100px;
+  }
+  
+  .btn-edit:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn-edit:focus {
+    outline: none;
+  }
+  
+  .btn-edit:active .icon {
+    transform: scale(0.85);
+  }
+  
+
+  .btn-view {
+    width: 120px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #54defa;
+    color: #000;
+  margin-bottom: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn-view:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+    background:#04c1e7 ;
+  }
+  
+  .btn-view .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn-view .text {
+    transform: translateX(55px);
+  }
+  
+  .btn-view:hover .icon {
+    width: 100px;
+  }
+  
+  .btn-view:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn-view:focus {
+    outline: none;
+  }
+  
+  .btn-view:active .icon {
+    transform: scale(0.85);
+  }
+  
+
+
+
+  .btn-delete {
+    width: 120px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #fa5454;
+    color: #000;
+  margin-bottom: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn-delete:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+    background:#e70404 ;
+  }
+  
+  .btn-delete .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn-delete .text {
+    transform: translateX(55px);
+  }
+  
+  .btn-delete:hover .icon {
+    width: 100px;
+  }
+  
+  .btn-delete:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn-delete:focus {
+    outline: none;
+  }
+  
+  .btn-delete:active .icon {
+    transform: scale(0.85);
+  }
+  
+
+
+  .btn-create {
+    position: absolute;
+    top: 1%;
+    left: 75%;
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #25fb50;
+    color: #000;
+  margin-bottom: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn-create:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+    background:#00ff33 ;
+  }
+  
+  .btn-create .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn-create .text {
+    transform: translateX(55px);
+  }
+  
+  .btn-create:hover .icon {
+    width: 200px;
+  }
+  
+  .btn-create:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn-create:focus {
+    outline: none;
+  }
+  
+  .btn-create:active .icon {
+    transform: scale(0.85);
+  }
+  
+
+  
+
+
+  
+

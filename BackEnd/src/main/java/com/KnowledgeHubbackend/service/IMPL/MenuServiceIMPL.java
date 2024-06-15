@@ -53,6 +53,32 @@ public class MenuServiceIMPL implements MenuService {
     }
 
     @Override
+    public List<MenuDTO> getByParentID(Integer parentID, Pageable pageable) {
+        List<MenuDTO> results = new ArrayList<>();
+        if (parentID!= 0) {
+            MenuEntity menuEntity= menuRepository.findByMenuid(parentID)
+                    .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + parentID));
+            List<MenuEntity> menuEntities    = menuRepository.findByParentID(menuEntity,pageable);
+            for (MenuEntity item: menuEntities
+            ) {
+                MenuDTO dto = modelMapper.map(item,MenuDTO.class);
+                results.add(dto);
+            }
+        }
+    else  {
+         List<MenuEntity> menuEntities = menuRepository.findAll(pageable).getContent();
+         for (MenuEntity item: menuEntities
+         ) {
+             if (item.getParentID() == null) {
+                 MenuDTO dto = modelMapper.map(item, MenuDTO.class);
+                 results.add(dto);
+             }
+         }
+     }
+        return results;
+    }
+
+    @Override
     public int totalItem() {
         return (int) menuRepository.count();
     }

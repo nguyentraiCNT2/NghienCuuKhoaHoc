@@ -1,0 +1,339 @@
+.group {
+    display: flex;
+    line-height: 30px;
+    align-items: center;
+    position: relative;
+    max-width: 700px;
+  margin-bottom: 20px;
+  }
+  
+  .input {
+    position: absolute;
+    width:500px;
+    height: 45px;
+    line-height: 30px;
+    padding: 0 5rem;
+    padding-left: 3rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f8fafc;
+    color: #0d0c22;
+    transition: .5s ease;
+    left: 130px;
+    top: 2.5%;
+    border-color: rgba(129, 140, 248);
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  }
+  
+  .input::placeholder {
+    color: #94a3b8;
+  }
+  
+  .input:focus, input:hover {
+    outline: none;
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  }
+.lb_name{
+position: absolute;
+top:  0;
+width: 100px;
+}
+
+/*loai tai lieu*/
+css
+Sao chép mã
+/* Thiết lập phần tử group */
+.group {
+    margin-bottom: 20px; /* Khoảng cách giữa các nhóm */
+}
+.group__select{
+    display: flex;
+    margin-bottom: 100px;
+}
+
+/* Thiết lập nhãn */
+.lb_category {
+    position: absolute;
+    top: 50px;
+    width: 150px; /* Chiều rộng đầy đủ */
+    padding: 8px; /* Khoảng cách giữa nội dung và khung */
+}
+
+
+/* Thiết lập input và select */
+
+.select__category {
+    width: 200px; /* Chiều rộng đầy đủ */
+    padding: 8px; /* Khoảng cách giữa nội dung và khung */
+    border: 1px solid #ccc; /* Đường viền */
+    border-radius: 5px; /* Bo góc */
+    box-sizing: border-box; /* Sửa lỗi box-sizing */
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    
+}
+
+/* Thiết lập các nhóm dữ liệu */
+.group_category {
+
+    display: flex; /* Hiển thị theo chiều ngang */
+    justify-content: space-between; /* Căn giữa các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    position: relative;
+    max-width: 700px;
+    top: 50px;
+}
+
+
+/* Thiết lập nhãn */
+.lb_author {
+    position: absolute;
+    top: 50px;
+    left: 380px;
+    width: 150px; /* Chiều rộng đầy đủ */
+    padding: 8px; /* Khoảng cách giữa nội dung và khung */
+}
+
+
+/* Thiết lập input và select */
+
+.select__author {
+    width: 200px; /* Chiều rộng đầy đủ */
+    padding: 8px; /* Khoảng cách giữa nội dung và khung */
+    border: 1px solid #ccc; /* Đường viền */
+    border-radius: 5px; /* Bo góc */
+    box-sizing: border-box; /* Sửa lỗi box-sizing */
+    position: absolute;
+    top: 50px;
+    left: 480px;
+    
+}
+
+/* Thiết lập các nhóm dữ liệu */
+.group_author {
+
+    display: flex; /* Hiển thị theo chiều ngang */
+    justify-content: space-between; /* Căn giữa các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    position: relative;
+    max-width: 700px;
+    top: 50px;
+}
+.text_mota{
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    width: 500px;
+    height: 200px;
+    padding: 20px 40px;
+    margin-bottom: 50px;
+}
+.status{
+    left: 600px;
+}
+
+.input_file {
+    position: absolute;
+    width:100px;
+    height: 45px;
+    line-height: 30px;
+    padding: 0 5rem;
+    padding-left: 3rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f8fafc;
+    color: #0d0c22;
+    transition: .5s ease;
+    left: 130px;
+    top: 200px;
+    border-color: rgba(129, 140, 248);
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  }
+  
+  .input::placeholder {
+    color: #94a3b8;
+  }
+  
+  .input:focus, input:hover {
+    outline: none;
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  }
+  .lb_file {
+    position: absolute;
+    top: 200px;
+    left: 10px;
+    width: 150px; /* Chiều rộng đầy đủ */
+    padding: 8px; /* Khoảng cách giữa nội dung và khung */
+  }
+  .input-file-container {
+    position: relative;
+    display: inline-block;
+    width:200px;
+    height: 45px;
+    line-height: 30px;
+
+    padding-left: 3rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f8fafc;
+    color: #0d0c22;
+    transition: .5s ease;
+    left: 180px;
+    top: 200px;
+    border-color: rgba(129, 140, 248);
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+.input-file {
+    display: none; /* Ẩn input type file */
+}
+
+.file-label {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.selected-file-name {
+    display: inline-block;
+    margin-left: 10px;
+    color: #333;
+}
+.view_file{
+    position: absolute;
+    top: 130px;
+    width: 300px;
+    height: 400px;
+
+}
+
+
+.btn-create_form {
+    position: absolute;
+    top: 1200px;
+    left: 75%;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #25fb50;
+    color: #000;
+  margin-bottom: 100px;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+
+  }
+  
+  .btn-create_form:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+    background:#00ff33 ;
+  }
+  
+  .btn-create_form .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn-create_form .text {
+    transform: translateX(55px);
+  }
+  
+  .btn-create_form:hover .icon {
+    width: 150px;
+  }
+  
+  .btn-create_form:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn-create_form:focus {
+    outline: none;
+  }
+  
+  .btn-create_form:active .icon {
+    transform: scale(0.85);
+  }
+  
+
+  
+.btn-create_reset{
+    position: absolute;
+    top: 1200px;
+    left: 200px;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #fb2525;
+    color: #000;
+  margin-bottom: 100px;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+
+  }
+  
+  .btn-create_reset:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+    background:#ff0000 ;
+  }
+  
+  .btn-create_reset .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn-create_reset .text {
+    transform: translateX(55px);
+  }
+  
+  .btn-create_reset:hover .icon {
+    width: 150px;
+  }
+  
+  .btn-create_reset:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn-create_reset:focus {
+    outline: none;
+  }
+  
+  .btn-create_reset:active .icon {
+    transform: scale(0.85);
+  }
+  
+

@@ -18,7 +18,7 @@ public interface MenuRepository extends JpaRepository<MenuEntity, Integer> {
     List<MenuEntity> findByMenuName(String menuName);
     @Query("select a from  MenuEntity a where a.menuName like %:menuName%")
     List<MenuEntity> findByMenuName(@Param("menuName") String menuName, Pageable pageable);
-    List<MenuEntity> findByParentID(Integer parentID, Pageable pageable);
+    List<MenuEntity> findByParentID(MenuEntity parentID, Pageable pageable);
     void deleteByMenuid(Integer menuid);
     MenuEntity saveAndFlush(MenuEntity menuEntity);
 }

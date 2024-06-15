@@ -36,6 +36,9 @@ public class DocumentEntity {
     @ManyToOne
     @JoinColumn(name = "menuid")
     private MenuEntity menuid;
+    @Column(name = "documentthumbnail", columnDefinition = "NVARCHAR(MAX)")
+    private String documentthumbnail;
+
 
     public Integer getDocumentid() {
         return documentid;
@@ -131,5 +134,13 @@ public class DocumentEntity {
 
     public void setMenuid(MenuEntity menuid) {
         this.menuid = menuid;
+    }
+
+    public String getDocumentthumbnail() {
+        return documentthumbnail;
+    }
+
+    public void setDocumentthumbnail(String documentthumbnail) {
+        this.documentthumbnail = documentthumbnail;
     }
 }

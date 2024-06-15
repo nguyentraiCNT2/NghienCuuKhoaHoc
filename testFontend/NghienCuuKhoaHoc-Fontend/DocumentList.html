@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách tài liệu</title>
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="./assets/css/button.css">
+    <link rel="stylesheet" href="./assets/css/lable.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free-6.5.2-web/css/all.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/create.css">
+    <link rel="stylesheet" href="./assets/css/radiobutton.css">
+    <!-- Link i con -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link icon -->
+</head>
+
+<body>
+    <main id="home-admin">
+        <header class="header">
+            <div class="header__container grid wide">
+                <div class="logo m-1 c-1">
+                    <a href="index.html">
+                        <img src="./assets/images/LightLogo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="c-3 m-4 l-2">
+                    <!-- stt: Statistical - Thống kê-->
+
+                    <a class="btn">
+                        <span class="icon">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </span>
+                        <span class="text">Thống kê</span>
+                    </a>
+                </div>
+                <div class="c-o-7 m-o-5 l-o-7 header__user">
+                    <button class="button">
+                        <svg viewBox="0 0 448 512" class="bell"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
+                     </button>
+                    <div class="user__avarar">
+                        <a href="#">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </div>
+                    <div class="user__username">
+                        <a href="#">
+                            UserName
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content grid wide">
+            <div class="row">
+                <div class="col c-2-4 m-3 l-2-4">
+                    <div class="content__menu" data="content-menu">
+                        <a class="btn" href="#">
+                            <span class="icon">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <span class="text">người dùng</span>
+                        </a>
+                        <a class="btn active">
+                            <span class="icon">
+                                <i class="fa-solid fa-file "></i>
+                            </span>
+                            <span class="text">tài liệu</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-list"></i>
+                            </span>
+                            <span class="text">loại tài liệu</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-bars-staggered"></i>
+                            </span>
+                            <span class="text">menu</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <span class="text">Lượt xem</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-boxes-packing"></i>
+                            </span>
+                            <span class="text">nhà cung cấp</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-book-atlas"></i>
+                            </span>
+                            <span class="text">nhà xuất bản</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-download"></i>
+                            </span>
+                            <span class="text">lượt tải</span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </span>
+                            <span class="text">nhật ký hoạt động </span>
+                        </a>
+                        <a class="btn">
+                            <span class="icon">
+                                <i class="fa-solid fa-pen-nib"></i>
+                            </span>
+                            <span class="text">tác giả</span>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col c-9-6 m-9 l-9-6">
+                    <div class="content__data" data="content-data">
+                        <a href="#" class="btn-shine">Danh sách tài liệu
+
+                        </a>
+
+                        <form action="" class="search__form">
+                            <input type="text" autocomplete="off" name="text" class="input"
+                                placeholder="Nhập tên tài liệu">
+                            <button class="btn-submit" type="button">
+                                <strong><i class="fa-solid fa-magnifying-glass"></i></strong>
+                                <div id="container-stars">
+                                    <div id="stars"></div>
+                                </div>
+
+                                <div id="glow">
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                </div>
+                            </button>
+
+                        </form>
+                        <a class="btn-create" href="/DocumentCreate.html">
+                            <span class="icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                            <span class="text">Thêm mới tài liệu</span>
+                        </a>
+                        <br>
+                        <br>
+                        <hr/>
+                        <div class="content__data-stt" data="statistical">
+                            <table class="custom-table">
+                                <thead class="table-dark">
+                                    <tr class="table-dark-item">
+                                        <th>#</th>
+                                        <th>Tài liệu</th>
+                                        <th>Tên tài liệu</th>
+                                        <th>Lượt xem</th>
+                                        <th>Lượt Tải</th>
+                                        <th>Xem</th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="document-list"></tbody>
+                            </table>
+                            <hr />
+                            <br />
+                            <div class="radio-input">
+                                <!-- Phần hiển thị số trang -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Hàm gửi yêu cầu lấy dữ liệu từ API
+        function fetchDocuments(page, limit) {
+            fetch(`http://127.0.0.1:2003/admin/quan-ly-tai-lieu/hien-thi-tat-ca?page=${page}&limit=${limit}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayDocuments(data.listResult);
+                    console.log(data.listResult)
+                    displayPagination(data.page, data.totalPage);
+                })
+                .catch(error => console.error(error));
+        }
+
+        // Hàm hiển thị danh sách tài liệu
+        function displayDocuments(documents) {
+            const documentList = document.getElementById('document-list');
+            documentList.innerHTML = '';
+
+            const rows = documents.map((document, index) => {
+                return `
+                    <tr class="table-dark-item">
+                        <td>${index + 1}</td>
+                        <td>
+                            <iframe src="./assets/images/DocumentImages/${document.fileURL}#page=1" class="view_file"></iframe>
+                        </td>
+                        <td>${document.documentname}</td>
+                        <td>${document.views}</td>
+                        <td>${document.countDownload}</td>
+                        <td><a class="btn-view"><span class="icon"><i class="fa-regular fa-eye"></i></span><span class="text">xem</span></a></td>
+                        <td><a class="btn-edit"><span class="icon"><i class="fa-solid fa-pen-to-square"></i></span><span class="text">sửa</span></a></td>
+                        <td><a class="btn-delete"><span class="icon"><i class="fa-regular fa-eye"></i></span><span class="text">xóa</span></a></td>
+                    </tr>
+                `;
+            });
+
+            documentList.insertAdjacentHTML('beforeend', rows.join(''));
+        }
+
+        // Hàm hiển thị phân trang
+        function displayPagination(currentPage, totalPages) {
+            const paginationContainer = document.querySelector('.radio-input');
+            paginationContainer.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'page-radio';
+                input.value = i;
+                input.id = `page-${i}`;
+                input.checked = i === currentPage;
+                input.addEventListener('change', () => fetchDocuments(i, 10));
+
+                const span = document.createElement('span');
+                span.textContent = i;
+
+                label.appendChild(input);
+                label.appendChild(span);
+                paginationContainer.appendChild(label);
+            }
+        }
+
+        // Gọi hàm fetchDocuments với trang đầu tiên và giới hạn 10 bản ghi
+        fetchDocuments(1, 10);
+    </script>
+    
+</body>
+
+</html>

@@ -13,21 +13,33 @@ import java.util.Optional;
 @Repository
 public interface DocumentRepository extends JpaRepository<DocumentEntity, Integer> {
     Optional<DocumentEntity> findByDocumentid(Integer documentid);
+
     @Query("select d from  DocumentEntity d where d.documentname like %:documentname%")
     List<DocumentEntity> findByDocumentname(@Param("documentname") String documentname, Pageable pageable);
+
     List<DocumentEntity> findByCategoryid(CategoryEntity categoryid, Pageable pageable);
+
     List<DocumentEntity> findByAuthorID(AuthorEntity authorID, Pageable pageable);
+
     List<DocumentEntity> findByPublisherid(PublishersEntity publisherid, Pageable pageable);
+
     List<DocumentEntity> findByMenuid(MenuEntity menuid, Pageable pageable);
+
     List<DocumentEntity> findBySupplierid(SuppliersEntity supplierid, Pageable pageable);
-    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.views desc " )
-    List<DocumentEntity> findAllByViewsOrderByDesc( Pageable pageable);
-    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.views desc " )
-    List<DocumentEntity> findAllByViewsOrderByAsc( Pageable pageable);
-    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.countDownload desc " )
-    List<DocumentEntity> findAllByCountDownloadOrderByDesc( Pageable pageable);
-    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.countDownload asc " )
-    List<DocumentEntity> findAllByCountDownloadOrderByAsc( Pageable pageable);
+
+    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.views desc ")
+    List<DocumentEntity> findAllByViewsOrderByDesc(Pageable pageable);
+
+    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.views desc ")
+    List<DocumentEntity> findAllByViewsOrderByAsc(Pageable pageable);
+
+    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.countDownload desc ")
+    List<DocumentEntity> findAllByCountDownloadOrderByDesc(Pageable pageable);
+
+    @Query("SELECT d FROM DocumentEntity d ORDER BY  d.countDownload asc ")
+    List<DocumentEntity> findAllByCountDownloadOrderByAsc(Pageable pageable);
+
     void deleteByDocumentid(Integer Documentid);
+
     DocumentEntity saveAndFlush(DocumentEntity downloaderEntity);
 }

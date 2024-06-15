@@ -26,6 +26,8 @@ public class UsersEntity {
     private Boolean gender;
     @Column(name = "status")
     private Boolean status;
+    @Column(name = "avartaURL",columnDefinition = "NVARCHAR(MAX)")
+    private String avartaURL;
 
     public String getUserid() {
         return userid;
@@ -89,5 +91,13 @@ public class UsersEntity {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getAvartaURL() {
+        return avartaURL;
+    }
+
+    public void setAvartaURL(String avartaURL) {
+        this.avartaURL = avartaURL;
     }
 }

@@ -13,8 +13,9 @@ public class MenuEntity {
     private String menuName;
     @Column(name = "MenuLink",columnDefinition = "NVARCHAR(MAX)")
     private String menuLink;
-    @Column(name = "ParentID")
-    private Integer parentID;
+    @ManyToOne
+    @JoinColumn(name = "parentID")
+    private MenuEntity parentID;
 
     public Integer getMenuid() {
         return menuid;
@@ -40,11 +41,11 @@ public class MenuEntity {
         this.menuLink = menuLink;
     }
 
-    public Integer getParentID() {
+    public MenuEntity getParentID() {
         return parentID;
     }
 
-    public void setParentID(Integer parentID) {
+    public void setParentID(MenuEntity parentID) {
         this.parentID = parentID;
     }
 }

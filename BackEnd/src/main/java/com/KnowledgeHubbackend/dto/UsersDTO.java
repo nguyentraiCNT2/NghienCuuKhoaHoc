@@ -10,6 +10,7 @@ public class UsersDTO {
     private Date birthofday;
     private Boolean gender;
     private Boolean status;
+    private String avartaURL;
 
     public String getUserid() {
         return userid;
@@ -73,5 +74,13 @@ public class UsersDTO {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getAvartaURL() {
+        return avartaURL;
+    }
+
+    public void setAvartaURL(String avartaURL) {
+        this.avartaURL = avartaURL;
     }
 }

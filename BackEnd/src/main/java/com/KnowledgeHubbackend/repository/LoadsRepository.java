@@ -15,6 +15,6 @@ import java.util.Optional;
 public interface LoadsRepository extends JpaRepository<LoadsEntity, Integer> {
     Optional<LoadsEntity> findByLoadid(Integer loadid);
     List<LoadsEntity> findByUserid(UsersEntity users, Pageable pageable);
-    List<LoadsEntity> findByDocumentid(DocumentEntity document, Pageable pageable);
+    List<LoadsEntity> findByDocumentID(DocumentEntity document, Pageable pageable);
     void deleteByLoadid(Integer loadid);
 }

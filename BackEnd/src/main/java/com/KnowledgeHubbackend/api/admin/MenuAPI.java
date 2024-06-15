@@ -50,6 +50,16 @@ public class MenuAPI {
         model.addAttribute("getByMenuname", result);
         return result;
     }
+    @GetMapping("/hien-thi-theo-danh-muc-con/{parentID}")
+    public MenuOutPut getByParentID(@PathVariable Integer parentID, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
+        MenuOutPut result = new MenuOutPut();
+        result.setPage(page);
+        Pageable pageable =  PageRequest.of(page - 1, limit);
+        result.setListResult(menuService.getByParentID(parentID,pageable));
+        result.setTotalPage((int) Math.ceil((double) (menuService.totalItem()) / limit));
+        model.addAttribute("getByMenuname", result);
+        return result;
+    }
     @GetMapping("/hien-thi-theo-id/{menuid}")
     public ResponseEntity<?> getByMenuid(@PathVariable Integer menuid){
         try {
