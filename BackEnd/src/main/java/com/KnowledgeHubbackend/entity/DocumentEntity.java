@@ -2,6 +2,8 @@ package com.KnowledgeHubbackend.entity;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "Document")
 public class DocumentEntity {
@@ -38,7 +40,16 @@ public class DocumentEntity {
     private MenuEntity menuid;
     @Column(name = "documentthumbnail", columnDefinition = "NVARCHAR(MAX)")
     private String documentthumbnail;
-
+    @Column(name = "timeadd")
+    private Date timeadd;
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private UsersEntity userid;
+    @Column(name = "timeupdate")
+    private Date timeupdate;
+    @ManyToOne
+    @JoinColumn(name = "updaterid")
+    private UsersEntity updaterid;
 
     public Integer getDocumentid() {
         return documentid;
@@ -142,5 +153,37 @@ public class DocumentEntity {
 
     public void setDocumentthumbnail(String documentthumbnail) {
         this.documentthumbnail = documentthumbnail;
+    }
+
+    public Date getTimeadd() {
+        return timeadd;
+    }
+
+    public void setTimeadd(Date timeadd) {
+        this.timeadd = timeadd;
+    }
+
+    public UsersEntity getUserid() {
+        return userid;
+    }
+
+    public void setUserid(UsersEntity userid) {
+        this.userid = userid;
+    }
+
+    public Date getTimeupdate() {
+        return timeupdate;
+    }
+
+    public void setTimeupdate(Date timeupdate) {
+        this.timeupdate = timeupdate;
+    }
+
+    public UsersEntity getUpdaterid() {
+        return updaterid;
+    }
+
+    public void setUpdaterid(UsersEntity updaterid) {
+        this.updaterid = updaterid;
     }
 }

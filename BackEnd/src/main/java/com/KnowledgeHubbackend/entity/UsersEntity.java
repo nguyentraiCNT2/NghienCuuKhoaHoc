@@ -28,6 +28,10 @@ public class UsersEntity {
     private Boolean status;
     @Column(name = "avartaURL",columnDefinition = "NVARCHAR(MAX)")
     private String avartaURL;
+    @Column(name = "firstname",columnDefinition = "NVARCHAR(MAX)")
+    private String firstname;
+    @Column(name = "lastname",columnDefinition = "NVARCHAR(MAX)")
+    private String lastname;
 
     public String getUserid() {
         return userid;
@@ -99,5 +103,21 @@ public class UsersEntity {
 
     public void setAvartaURL(String avartaURL) {
         this.avartaURL = avartaURL;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

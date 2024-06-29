@@ -1,5 +1,12 @@
 package com.KnowledgeHubbackend.dto;
 
+import com.KnowledgeHubbackend.entity.UsersEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+import java.sql.Date;
+
 public class DocumentDTO {
     private Integer documentid;
     private String documentname;
@@ -14,6 +21,10 @@ public class DocumentDTO {
     private PublishersDTO publisherid;
     private MenuDTO menuid;
     private String documentthumbnail;
+    private Date timeadd;
+    private UsersDTO userid;
+    private Date timeupdate;
+    private UsersDTO updaterid;
 
     public Integer getDocumentid() {
         return documentid;
@@ -117,5 +128,37 @@ public class DocumentDTO {
 
     public void setDocumentthumbnail(String documentthumbnail) {
         this.documentthumbnail = documentthumbnail;
+    }
+
+    public Date getTimeadd() {
+        return timeadd;
+    }
+
+    public void setTimeadd(Date timeadd) {
+        this.timeadd = timeadd;
+    }
+
+    public UsersDTO getUserid() {
+        return userid;
+    }
+
+    public void setUserid(UsersDTO userid) {
+        this.userid = userid;
+    }
+
+    public Date getTimeupdate() {
+        return timeupdate;
+    }
+
+    public void setTimeupdate(Date timeupdate) {
+        this.timeupdate = timeupdate;
+    }
+
+    public UsersDTO getUpdaterid() {
+        return updaterid;
+    }
+
+    public void setUpdaterid(UsersDTO updaterid) {
+        this.updaterid = updaterid;
     }
 }

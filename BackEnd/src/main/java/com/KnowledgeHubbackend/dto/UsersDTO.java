@@ -1,5 +1,7 @@
 package com.KnowledgeHubbackend.dto;
 
+import jakarta.persistence.Column;
+
 import java.sql.Date;
 public class UsersDTO {
     private String userid;
@@ -11,7 +13,8 @@ public class UsersDTO {
     private Boolean gender;
     private Boolean status;
     private String avartaURL;
-
+    private String firstname;
+    private String lastname;
     public String getUserid() {
         return userid;
     }
@@ -82,5 +85,21 @@ public class UsersDTO {
 
     public void setAvartaURL(String avartaURL) {
         this.avartaURL = avartaURL;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

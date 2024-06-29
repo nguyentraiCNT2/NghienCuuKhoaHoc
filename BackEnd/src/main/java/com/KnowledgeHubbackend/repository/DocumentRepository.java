@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface DocumentRepository extends JpaRepository<DocumentEntity, Integer> {
     Optional<DocumentEntity> findByDocumentid(Integer documentid);
-
+    List<DocumentEntity> findByUserid(UsersEntity users, Pageable pageable);
     @Query("select d from  DocumentEntity d where d.documentname like %:documentname%")
     List<DocumentEntity> findByDocumentname(@Param("documentname") String documentname, Pageable pageable);
 

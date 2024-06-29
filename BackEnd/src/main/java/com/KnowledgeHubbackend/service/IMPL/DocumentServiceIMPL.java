@@ -31,10 +31,10 @@ import java.util.UUID;
 
 @Service
 public class DocumentServiceIMPL implements DocumentService {
-    @Value("D:/KnowledgeHub/uploaddocument/Document/")
-    private String documentSavePath;
-    @Value("D:/KnowledgeHub/uploaddocument/images/")
-    private String imageSavePath;
+    @Value("/static/Upload/Document/")
+    public String documentSavePath;
+    @Value("/static/Upload/images/")
+    public String imageSavePath;
     @Autowired
     private final DocumentRepository documentRepository;
     @Autowired
@@ -55,6 +55,7 @@ public class DocumentServiceIMPL implements DocumentService {
     private final UserRepository userRepository;
     @Autowired
     private final NotificationsRepository notificationsRepository;
+
 
     public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, MenuRepository menuRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository) {
         this.documentRepository = documentRepository;
@@ -271,6 +272,12 @@ public class DocumentServiceIMPL implements DocumentService {
             AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
             SuppliersEntity suppliers = suppliersRepository.findBySupplierid(documentDTO.getSupplierid().getSupplierid()).orElse(null);
             PublishersEntity publishers = publishersRepository.findByPublisherid(documentDTO.getPublisherid().getPublisherid()).orElse(null);
+            LocalDate currentDate = LocalDate.now();
+            Date currentSqlDate = Date.valueOf(currentDate);
+            document.setTimeadd(currentSqlDate);
+            document.setTimeupdate(null);
+            document.setUpdaterid(null);
+            document.setUserid(users);
             document.setCategoryid(category);
             document.setMenuid(menu);
             document.setAuthorID(author);
@@ -283,15 +290,14 @@ public class DocumentServiceIMPL implements DocumentService {
             String pdfFilename = UUID.randomUUID().toString() + ".pdf";
             String pdfFilePath = documentSavePath + pdfFilename;
              DocToPdf.convertDocToPdf(file.getInputStream(), pdfFilePath);
-            document.setFileURL(filename);
+            document.setFileURL(pdfFilePath);
             // Chụp ảnh trang đầu tiên của file PDF
             String thumbnailFilename = UUID.randomUUID().toString() + "_thumbnail.jpg";
             String thumbnailPath = imageSavePath + thumbnailFilename;
             createPdfThumbnail(filePath, thumbnailPath);
-            document.setDocumentthumbnail(thumbnailFilename);
+            document.setDocumentthumbnail(thumbnailPath);
             DocumentEntity saveDocument = documentRepository.save(document);
-            LocalDate currentDate = LocalDate.now();
-            Date currentSqlDate = Date.valueOf(currentDate);
+
             String description = users.getUsername() + " Đã thêm thông tin tài liệu có tên " + saveDocument.getDocumentname();
             HistoryEntity historyEntity = new HistoryEntity();
             historyEntity.setDocumentid(saveDocument);
@@ -322,6 +328,7 @@ public class DocumentServiceIMPL implements DocumentService {
             AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
             MenuEntity menu = menuRepository.findByMenuid(documentDTO.getMenuid().getMenuid()).orElse(null);
             String fileurl = existingDocument.getFileURL();
+            String imagesurl = existingDocument.getDocumentthumbnail();
             Integer Views = existingDocument.getViews();
             Integer countDown = existingDocument.getCountDownload();
             CategoryDTO categoryDTO = modelMapper.map(category, CategoryDTO.class);
@@ -329,6 +336,12 @@ public class DocumentServiceIMPL implements DocumentService {
             PublishersDTO publishersDTO = modelMapper.map(publishers, PublishersDTO.class);
             AuthorDTO authorDTO = modelMapper.map(author, AuthorDTO.class);
             MenuDTO menuDTO = modelMapper.map(menu, MenuDTO.class);
+            UsersDTO usersDTO = modelMapper.map(existingDocument.getUserid(), UsersDTO.class);
+            UsersDTO updaterid = modelMapper.map(users, UsersDTO.class);
+            documentDTO.setTimeadd(existingDocument.getTimeadd());
+            documentDTO.setUserid(usersDTO);
+            documentDTO.setUpdaterid(updaterid);
+            documentDTO.setTimeupdate(Date.valueOf(LocalDate.now()));
             documentDTO.setPublisherid(publishersDTO);
             documentDTO.setSupplierid(suppliersDTO);
             documentDTO.setAuthorID(authorDTO);
@@ -341,10 +354,18 @@ public class DocumentServiceIMPL implements DocumentService {
                 }
                 modelMapper.map(documentDTO, existingDocument);
                 String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-                String filePath = imageSavePath + filename;
+                String filePath = documentSavePath + filename;
                 Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-                existingDocument.setFileURL(filename);
-
+                // Chuyển đổi file từ doc sang pdf
+                String pdfFilename = UUID.randomUUID().toString() + ".pdf";
+                String pdfFilePath = documentSavePath + pdfFilename;
+                DocToPdf.convertDocToPdf(file.getInputStream(), pdfFilePath);
+                existingDocument.setFileURL(pdfFilePath);
+                // Chụp ảnh trang đầu tiên của file PDF
+                String thumbnailFilename = UUID.randomUUID().toString() + "_thumbnail.jpg";
+                String thumbnailPath = imageSavePath + thumbnailFilename;
+                createPdfThumbnail(filePath, thumbnailPath);
+                existingDocument.setDocumentthumbnail(thumbnailPath);
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);
                 DocumentEntity saveDocument = documentRepository.save(existingDocument);
@@ -369,6 +390,7 @@ public class DocumentServiceIMPL implements DocumentService {
             } else {
                 modelMapper.map(documentDTO, existingDocument);
                 existingDocument.setFileURL(fileurl);
+                existingDocument.setDocumentthumbnail(imagesurl);
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);
                 DocumentEntity saveDocument = documentRepository.save(existingDocument);
@@ -402,7 +424,6 @@ public class DocumentServiceIMPL implements DocumentService {
         try (PDDocument document = PDDocument.load(new File(filePath))) {
             PDFRenderer pdfRenderer = new PDFRenderer(document);
             BufferedImage image = pdfRenderer.renderImageWithDPI(0, 300); // render first page at 300 DPI
-
             try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                 Thumbnails.of(image).size(800, 1200).outputFormat("jpg").toOutputStream(baos);
                 Files.write(Paths.get(thumbnailPath), baos.toByteArray());
