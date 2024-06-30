@@ -136,25 +136,39 @@ public class DangNhapAPI {
             userDTO.setUserid(randomId);
             userDTO.setStatus(true);
             loginService.SignUp(userDTO);
-            long expirationMillis = 3600;
-            String mainToken = TokenUtil.generateToken(userDTO.getUserid(), expirationMillis);
-            Map<String, Object> response = new HashMap<>();
-            Cookie cookie = new Cookie("token", mainToken);
-            cookie.setHttpOnly(true);
-            cookie.setMaxAge(3600);
-            cookie.setPath("/");
-            response.put("token", mainToken);
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(randomId, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/kiem-tra-ma-xac-thuc")
-    public ResponseEntity<?> getByCheckcore(@RequestParam("code") String code) {
+    public ResponseEntity<?> getByCheckcore(@RequestParam("code") String code, @RequestParam("userid") String userid) {
         try {
-            UsersDTO userDTO = loginService.ComfirmEmail(code);
-            return new ResponseEntity<>(userDTO, HttpStatus.OK);
+            UsersDTO userDTO = loginService.ComfirmEmail(code,userid);
+            long expirationMillis = 3600;
+            // Tạo token chính từ thông tin của người dùng
+            String mainToken = TokenUtil.generateToken(userDTO.getUserid(), expirationMillis);
+            // Tạo một map chứa các thông tin phản hồi
+            Map<String, Object> response = new HashMap<>();
+            // Tạo một cookie chứa token để gửi về client
+            // Tạo cookie với token
+            ResponseCookie cookie = ResponseCookie.from("token", mainToken)
+                    .httpOnly(true) // Thiết lập httponly
+                    .maxAge(Duration.ofSeconds(3600)) // Thiết lập thời gian sống của cookie
+                    .sameSite("None") // Thiết lập SameSite
+                    .secure(true) // Đánh dấu cookie chỉ được gửi qua kênh an toàn (HTTPS)
+                    .path("/")
+                    .build();
+
+            // Thêm cookie vào header của phản hồi
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
+            response.put("token", mainToken);
+            response.put("user", userDTO);
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

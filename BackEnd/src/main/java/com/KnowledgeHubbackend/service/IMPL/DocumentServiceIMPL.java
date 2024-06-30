@@ -46,8 +46,6 @@ public class DocumentServiceIMPL implements DocumentService {
     @Autowired
     private final SuppliersRepository suppliersRepository;
     @Autowired
-    private final MenuRepository menuRepository;
-    @Autowired
     private final CategoryRepository categoryRepository;
     @Autowired
     private final HistoryRepository historyRepository;
@@ -57,13 +55,12 @@ public class DocumentServiceIMPL implements DocumentService {
     private final NotificationsRepository notificationsRepository;
 
 
-    public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, MenuRepository menuRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository) {
+    public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository) {
         this.documentRepository = documentRepository;
         this.modelMapper = modelMapper;
         this.authorRepository = authorRepository;
         this.publishersRepository = publishersRepository;
         this.suppliersRepository = suppliersRepository;
-        this.menuRepository = menuRepository;
         this.categoryRepository = categoryRepository;
         this.historyRepository = historyRepository;
         this.userRepository = userRepository;
@@ -184,19 +181,6 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
-    public List<DocumentDTO> getByMenuid(Integer menuid, Pageable pageable) {
-        List<DocumentDTO> results = new ArrayList<>();
-        MenuEntity menu = menuRepository.findByMenuid(menuid).orElseThrow(null);
-        List<DocumentEntity> documentEntities = documentRepository.findByMenuid(menu, pageable);
-        for (DocumentEntity item : documentEntities
-        ) {
-            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
-            results.add(dto);
-        }
-        return results;
-    }
-
-    @Override
     public List<DocumentDTO> getBySupplierid(Integer supplierid, Pageable pageable) {
         List<DocumentDTO> results = new ArrayList<>();
         SuppliersEntity suppliers = suppliersRepository.findBySupplierid(supplierid).orElseThrow(null);
@@ -268,7 +252,6 @@ public class DocumentServiceIMPL implements DocumentService {
             UsersEntity users = userRepository.findByUserid(userid).orElse(null);
             DocumentEntity document = modelMapper.map(documentDTO, DocumentEntity.class);
             CategoryEntity category = categoryRepository.findByCategoryid(documentDTO.getCategoryid().getCategoryid()).orElse(null);
-            MenuEntity menu = menuRepository.findByMenuid(documentDTO.getMenuid().getMenuid()).orElse(null);
             AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
             SuppliersEntity suppliers = suppliersRepository.findBySupplierid(documentDTO.getSupplierid().getSupplierid()).orElse(null);
             PublishersEntity publishers = publishersRepository.findByPublisherid(documentDTO.getPublisherid().getPublisherid()).orElse(null);
@@ -279,7 +262,6 @@ public class DocumentServiceIMPL implements DocumentService {
             document.setUpdaterid(null);
             document.setUserid(users);
             document.setCategoryid(category);
-            document.setMenuid(menu);
             document.setAuthorID(author);
             document.setSupplierid(suppliers);
             document.setPublisherid(publishers);
@@ -326,7 +308,6 @@ public class DocumentServiceIMPL implements DocumentService {
             SuppliersEntity suppliers = suppliersRepository.findBySupplierid(documentDTO.getSupplierid().getSupplierid()).orElse(null);
             PublishersEntity publishers = publishersRepository.findByPublisherid(documentDTO.getPublisherid().getPublisherid()).orElse(null);
             AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
-            MenuEntity menu = menuRepository.findByMenuid(documentDTO.getMenuid().getMenuid()).orElse(null);
             String fileurl = existingDocument.getFileURL();
             String imagesurl = existingDocument.getDocumentthumbnail();
             Integer Views = existingDocument.getViews();
@@ -335,7 +316,6 @@ public class DocumentServiceIMPL implements DocumentService {
             SuppliersDTO suppliersDTO = modelMapper.map(suppliers, SuppliersDTO.class);
             PublishersDTO publishersDTO = modelMapper.map(publishers, PublishersDTO.class);
             AuthorDTO authorDTO = modelMapper.map(author, AuthorDTO.class);
-            MenuDTO menuDTO = modelMapper.map(menu, MenuDTO.class);
             UsersDTO usersDTO = modelMapper.map(existingDocument.getUserid(), UsersDTO.class);
             UsersDTO updaterid = modelMapper.map(users, UsersDTO.class);
             documentDTO.setTimeadd(existingDocument.getTimeadd());
@@ -345,7 +325,6 @@ public class DocumentServiceIMPL implements DocumentService {
             documentDTO.setPublisherid(publishersDTO);
             documentDTO.setSupplierid(suppliersDTO);
             documentDTO.setAuthorID(authorDTO);
-            documentDTO.setMenuid(menuDTO);
             documentDTO.setCategoryid(categoryDTO);
             if (!file.isEmpty()) {
                 if (existingDocument.getFileURL() != null && !existingDocument.getFileURL().isEmpty()) {

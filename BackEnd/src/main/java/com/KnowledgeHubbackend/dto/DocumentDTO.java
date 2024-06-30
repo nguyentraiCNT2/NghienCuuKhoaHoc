@@ -19,7 +19,6 @@ public class DocumentDTO {
     private Integer countDownload;
     private AuthorDTO authorID;
     private PublishersDTO publisherid;
-    private MenuDTO menuid;
     private String documentthumbnail;
     private Date timeadd;
     private UsersDTO userid;
@@ -114,13 +113,6 @@ public class DocumentDTO {
         this.publisherid = publisherid;
     }
 
-    public MenuDTO getMenuid() {
-        return menuid;
-    }
-
-    public void setMenuid(MenuDTO menuid) {
-        this.menuid = menuid;
-    }
 
     public String getDocumentthumbnail() {
         return documentthumbnail;

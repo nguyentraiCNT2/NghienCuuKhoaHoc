@@ -1,7 +1,6 @@
 package com.KnowledgeHubbackend.api.output;
 
 import com.KnowledgeHubbackend.dto.CategoryDTO;
-import com.KnowledgeHubbackend.dto.MenuDTO;
 
 import java.util.ArrayList;
 import java.util.List;

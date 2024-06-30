@@ -1,9 +1,7 @@
 package com.KnowledgeHubbackend.service;
 
 import com.KnowledgeHubbackend.dto.CategoryDTO;
-import com.KnowledgeHubbackend.dto.MenuDTO;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

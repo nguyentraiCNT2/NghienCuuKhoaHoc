@@ -1,9 +1,7 @@
 package com.KnowledgeHubbackend.service.IMPL;
 
 import com.KnowledgeHubbackend.dto.CategoryDTO;
-import com.KnowledgeHubbackend.dto.MenuDTO;
 import com.KnowledgeHubbackend.entity.CategoryEntity;
-import com.KnowledgeHubbackend.entity.MenuEntity;
 import com.KnowledgeHubbackend.repository.CategoryRepository;
 import com.KnowledgeHubbackend.service.CategoryService;
 import jakarta.persistence.EntityNotFoundException;

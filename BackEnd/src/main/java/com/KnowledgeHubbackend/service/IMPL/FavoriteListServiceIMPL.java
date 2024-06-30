@@ -2,7 +2,6 @@ package com.KnowledgeHubbackend.service.IMPL;
 
 import com.KnowledgeHubbackend.dto.DocumentDTO;
 import com.KnowledgeHubbackend.dto.FavoriteListDTO;
-import com.KnowledgeHubbackend.dto.MenuDTO;
 import com.KnowledgeHubbackend.dto.UsersDTO;
 import com.KnowledgeHubbackend.entity.*;
 import com.KnowledgeHubbackend.repository.DocumentRepository;
@@ -15,13 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class FavoriteListServiceIMPL implements FavoriteListService {

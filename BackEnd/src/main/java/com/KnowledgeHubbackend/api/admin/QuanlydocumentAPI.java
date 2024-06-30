@@ -57,16 +57,6 @@ public class QuanlydocumentAPI {
         return result;
     }
 
-    @GetMapping("/hien-thi-theo-danh-muc/{menuid}")
-    public DocumentOutput getByMenuid(@PathVariable Integer menuid, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model) {
-        DocumentOutput result = new DocumentOutput();
-        result.setPage(page);
-        Pageable pageable = PageRequest.of(page - 1, limit);
-        result.setListResult(documentService.getByMenuid(menuid, pageable));
-        result.setTotalPage((int) Math.ceil((double) (documentService.totalItem()) / limit));
-        model.addAttribute("getByAuthorid", result);
-        return result;
-    }
 
     @GetMapping("/hien-thi-theo-nha-xuat-ban/{publisherid}")
     public DocumentOutput getByPublisherid(@PathVariable Integer publisherid, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model) {
@@ -163,8 +153,6 @@ public class QuanlydocumentAPI {
         authorDTO.setAuthorid(authorID);
         PublishersDTO publishersDTO = new PublishersDTO();
         publishersDTO.setPublisherid(publisherid);
-        MenuDTO menuDTO = new MenuDTO();
-        menuDTO.setMenuid(menuid);
         DocumentDTO documentDTO = new DocumentDTO();
         documentDTO.setDocumentname(documentname);
         documentDTO.setCategoryid(categoryDTO);
@@ -174,7 +162,6 @@ public class QuanlydocumentAPI {
         documentDTO.setViews(0);
         documentDTO.setCountDownload(0);
         documentDTO.setAuthorID(authorDTO);
-        documentDTO.setMenuid(menuDTO);
         documentDTO.setPublisherid(publishersDTO);
         try {
             documentService.createDocument(documentDTO, file, userid);
@@ -199,8 +186,6 @@ public class QuanlydocumentAPI {
         authorDTO.setAuthorid(authorID);
         PublishersDTO publishersDTO = new PublishersDTO();
         publishersDTO.setPublisherid(publisherid);
-        MenuDTO menuDTO = new MenuDTO();
-        menuDTO.setMenuid(menuid);
         DocumentDTO documentDTO = new DocumentDTO();
         documentDTO.setDocumentname(documentname);
         documentDTO.setCategoryid(categoryDTO);
@@ -208,7 +193,6 @@ public class QuanlydocumentAPI {
         documentDTO.setStatus(status);
         documentDTO.setSupplierid(suppliersDTO);
         documentDTO.setAuthorID(authorDTO);
-        documentDTO.setMenuid(menuDTO);
         documentDTO.setPublisherid(publishersDTO);
         try {
             documentDTO.setDocumentid(documentid);

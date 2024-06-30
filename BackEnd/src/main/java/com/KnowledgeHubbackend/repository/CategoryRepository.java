@@ -1,7 +1,6 @@
 package com.KnowledgeHubbackend.repository;
 
 import com.KnowledgeHubbackend.entity.CategoryEntity;
-import com.KnowledgeHubbackend.entity.MenuEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

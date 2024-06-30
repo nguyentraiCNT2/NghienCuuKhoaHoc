@@ -2,6 +2,7 @@ package com.KnowledgeHubbackend.service.IMPL;
 
 import com.KnowledgeHubbackend.algorithm.RandomId;
 import com.KnowledgeHubbackend.algorithm.SendCodeByEmail;
+import com.KnowledgeHubbackend.algorithm.TokenUtil;
 import com.KnowledgeHubbackend.dto.UsersDTO;
 import com.KnowledgeHubbackend.entity.RolesEntity;
 import com.KnowledgeHubbackend.entity.UserRoleEntity;
@@ -11,6 +12,7 @@ import com.KnowledgeHubbackend.repository.RolesRepository;
 import com.KnowledgeHubbackend.repository.UserRepository;
 import com.KnowledgeHubbackend.repository.UserRoleRepository;
 import com.KnowledgeHubbackend.service.LoginService;
+import jakarta.persistence.EntityNotFoundException;
 import org.mindrot.jbcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,6 @@ public class LoginServiceIMPL implements LoginService {
     private final UserRoleRepository userRoleRepository;
     @Autowired
     private final ModelMapper modelMapper;
-
     private UsersEntity userSignUp;
     private UserRoleEntity userrolesignup;
     private String maxacthuc;
@@ -154,9 +155,12 @@ public class LoginServiceIMPL implements LoginService {
     }
 
     @Override
-    public UsersDTO ComfirmEmail(String code) {
+    public UsersDTO ComfirmEmail(String code, String userid) {
         if (!maxacthuc.equals(code)){
             throw new RuntimeException("Mã xác thực không đúng");
+        }
+        if (!userid.equals(userSignUp.getUserid())) {
+            throw new RuntimeException("Tài khoản này đã được kích hoạt");
         }
         userRepository.save(userSignUp);
         userRoleRepository.save(userrolesignup);
@@ -189,7 +193,7 @@ public class LoginServiceIMPL implements LoginService {
                 throw new RuntimeException("may khau khong the chua ten dang nhap");
             }
             try {
-                String MKC2 = RandomId.generateMKC2(8);
+                String MKC2 = RandomId.generateMKC2(4);
                 maxacthuc = MKC2;
                 String to = userDTO.getEmail();
                 String subject = "Xác thực email đăng ký ";
@@ -202,7 +206,6 @@ public class LoginServiceIMPL implements LoginService {
                 if (test == true) {
                     UsersEntity user =  modelMapper.map(userDTO, UsersEntity.class);
                     String hashedPassword =   BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-                    user.setUserid(RandomId.generateRandomId(20));
                     user.setPassword(hashedPassword);
                     List<RolesEntity>  roles = rolesRepository.findByRolename("User");
                     UserRoleEntity userRoleEntity = new UserRoleEntity();
@@ -219,6 +222,20 @@ public class LoginServiceIMPL implements LoginService {
                 throw new RuntimeException("Email đã tồn tại!");
             }
 
+        }
+    }
+
+    @Override
+    public UsersDTO getUserById(String token) {
+        try {
+            String userid = TokenUtil.getUserIdFromToken(token);
+            UsersEntity user = userRepository.findByUserid(userid)
+                    .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + userid));
+            return modelMapper.map(user,UsersDTO.class);
+        } catch (EntityNotFoundException ex) {
+            throw ex;
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while fetching data by ID", e);
         }
     }
 }

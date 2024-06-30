@@ -24,7 +24,6 @@ public interface DocumentRepository extends JpaRepository<DocumentEntity, Intege
 
     List<DocumentEntity> findByPublisherid(PublishersEntity publisherid, Pageable pageable);
 
-    List<DocumentEntity> findByMenuid(MenuEntity menuid, Pageable pageable);
 
     List<DocumentEntity> findBySupplierid(SuppliersEntity supplierid, Pageable pageable);
 

@@ -21,7 +21,6 @@ public interface DocumentService {
     List<DocumentDTO> getByCategoryid(Integer categoryid, Pageable pageable);
     List<DocumentDTO> getByAuthorID(Integer authorID, Pageable pageable);
     List<DocumentDTO> getByPublisherid(Integer publisherid, Pageable pageable);
-    List<DocumentDTO> getByMenuid(Integer menuid, Pageable pageable);
     List<DocumentDTO> getBySupplierid(Integer supplierid, Pageable pageable);
     int totalItem();
     DocumentDTO getByDocumentid(Integer documentid);

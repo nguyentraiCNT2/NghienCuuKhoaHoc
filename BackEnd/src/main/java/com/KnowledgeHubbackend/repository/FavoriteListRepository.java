@@ -2,7 +2,6 @@ package com.KnowledgeHubbackend.repository;
 
 import com.KnowledgeHubbackend.entity.DocumentEntity;
 import com.KnowledgeHubbackend.entity.FavoriteListEntity;
-import com.KnowledgeHubbackend.entity.MenuEntity;
 import com.KnowledgeHubbackend.entity.UsersEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

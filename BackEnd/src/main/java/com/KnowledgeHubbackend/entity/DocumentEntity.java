@@ -35,9 +35,7 @@ public class DocumentEntity {
     @ManyToOne
     @JoinColumn(name = "publisherid")
     private PublishersEntity publisherid;
-    @ManyToOne
-    @JoinColumn(name = "menuid")
-    private MenuEntity menuid;
+
     @Column(name = "documentthumbnail", columnDefinition = "NVARCHAR(MAX)")
     private String documentthumbnail;
     @Column(name = "timeadd")
@@ -139,13 +137,6 @@ public class DocumentEntity {
         this.publisherid = publisherid;
     }
 
-    public MenuEntity getMenuid() {
-        return menuid;
-    }
-
-    public void setMenuid(MenuEntity menuid) {
-        this.menuid = menuid;
-    }
 
     public String getDocumentthumbnail() {
         return documentthumbnail;
