@@ -2,7 +2,9 @@ package com.KnowledgeHubbackend.service.IMPL;
 
 import com.KnowledgeHubbackend.dto.CategoryDTO;
 import com.KnowledgeHubbackend.entity.CategoryEntity;
+import com.KnowledgeHubbackend.entity.GenresEntity;
 import com.KnowledgeHubbackend.repository.CategoryRepository;
+import com.KnowledgeHubbackend.repository.GenresRepository;
 import com.KnowledgeHubbackend.service.CategoryService;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
@@ -18,16 +20,32 @@ public class CategoryServiceIMPL implements CategoryService {
     private final CategoryRepository categoryRepository;
     @Autowired
     private final ModelMapper modelMapper;
+    @Autowired
+    private final GenresRepository genresRepository;
 
-    public CategoryServiceIMPL(CategoryRepository categoryRepository, ModelMapper modelMapper) {
+    public CategoryServiceIMPL(CategoryRepository categoryRepository, ModelMapper modelMapper, GenresRepository genresRepository) {
         this.categoryRepository = categoryRepository;
         this.modelMapper = modelMapper;
+        this.genresRepository = genresRepository;
     }
 
     @Override
     public List<CategoryDTO> getAll(Pageable pageable) {
         List<CategoryDTO> results = new ArrayList<>();
         List<CategoryEntity> categoryEntities = categoryRepository.findAll(pageable).getContent();
+        for (CategoryEntity item: categoryEntities
+        ) {
+            CategoryDTO dto = modelMapper.map(item,CategoryDTO.class);
+            results.add(dto);
+        }
+        return results;
+    }
+
+    @Override
+    public List<CategoryDTO> getByGenres(Integer genreid, Pageable pageable) {
+        List<CategoryDTO> results = new ArrayList<>();
+        GenresEntity genresEntity = genresRepository.findById(genreid).orElseThrow(null);
+        List<CategoryEntity> categoryEntities = categoryRepository.findByGenres(genresEntity,pageable);
         for (CategoryEntity item: categoryEntities
         ) {
             CategoryDTO dto = modelMapper.map(item,CategoryDTO.class);

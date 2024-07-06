@@ -13,6 +13,9 @@ public class CategoryEntity {
     private String categoryname;
     @Column(name = "description",columnDefinition = "NVARCHAR(MAX)")
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "genreid")
+    private GenresEntity genres;
 
     public Integer getCategoryid() {
         return categoryid;
@@ -36,5 +39,13 @@ public class CategoryEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public GenresEntity getGenres() {
+        return genres;
+    }
+
+    public void setGenres(GenresEntity genres) {
+        this.genres = genres;
     }
 }

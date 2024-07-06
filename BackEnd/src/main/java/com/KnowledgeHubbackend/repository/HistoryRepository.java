@@ -1,7 +1,6 @@
 package com.KnowledgeHubbackend.repository;
 
 import com.KnowledgeHubbackend.entity.DocumentEntity;
-import com.KnowledgeHubbackend.entity.DownloaderEntity;
 import com.KnowledgeHubbackend.entity.HistoryEntity;
 import com.KnowledgeHubbackend.entity.UsersEntity;
 import org.springframework.data.domain.Pageable;

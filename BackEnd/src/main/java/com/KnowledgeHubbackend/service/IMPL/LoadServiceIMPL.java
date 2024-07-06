@@ -5,7 +5,6 @@ import com.KnowledgeHubbackend.dto.HistoryDTO;
 import com.KnowledgeHubbackend.dto.LoadsDTO;
 import com.KnowledgeHubbackend.entity.*;
 import com.KnowledgeHubbackend.repository.DocumentRepository;
-import com.KnowledgeHubbackend.repository.DownloaderRepository;
 import com.KnowledgeHubbackend.repository.LoadsRepository;
 import com.KnowledgeHubbackend.repository.UserRepository;
 import com.KnowledgeHubbackend.service.LoadService;
@@ -27,16 +26,13 @@ public class LoadServiceIMPL implements LoadService {
     @Autowired
     private final ModelMapper modelMapper;
     @Autowired
-    private final DownloaderRepository downloaderRepository;
-    @Autowired
     private final UserRepository userRepository;
     @Autowired
     private final DocumentRepository documentRepository;
 
-    public LoadServiceIMPL(LoadsRepository loadsRepository, ModelMapper modelMapper, DownloaderRepository downloaderRepository, UserRepository userRepository, DocumentRepository documentRepository) {
+    public LoadServiceIMPL(LoadsRepository loadsRepository, ModelMapper modelMapper, UserRepository userRepository, DocumentRepository documentRepository) {
         this.loadsRepository = loadsRepository;
         this.modelMapper = modelMapper;
-        this.downloaderRepository = downloaderRepository;
         this.userRepository = userRepository;
         this.documentRepository = documentRepository;
     }
@@ -103,14 +99,8 @@ public class LoadServiceIMPL implements LoadService {
             loads.setUserid(users);
             loads.setDocumentID(document);
             loads.setDateDown(currentSqlDate);
-        LoadsEntity saveLoads = loadsRepository.save(loads);
-            DownloaderEntity downloaderEntity = new DownloaderEntity();
-            downloaderEntity.setLoadid(saveLoads);
-            downloaderEntity.setDateDown(currentSqlDate);
-            downloaderEntity.setDownEmail(users.getEmail());
-            downloaderEntity.setDownName(users.getUsername());
-            downloaderEntity.setDownPhone(users.getPhone());
-            downloaderRepository.save(downloaderEntity);
+            loadsRepository.save(loads);
+
         }
     }
     @Override

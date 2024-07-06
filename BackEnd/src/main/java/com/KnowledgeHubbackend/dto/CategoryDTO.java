@@ -1,9 +1,12 @@
 package com.KnowledgeHubbackend.dto;
 
+import com.KnowledgeHubbackend.entity.GenresEntity;
+
 public class CategoryDTO {
     private Integer categoryid;
     private String categoryname;
     private String description;
+    private GenresDTO genres;
 
     public Integer getCategoryid() {
         return categoryid;
@@ -27,5 +30,13 @@ public class CategoryDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public GenresDTO getGenres() {
+        return genres;
+    }
+
+    public void setGenres(GenresDTO genres) {
+        this.genres = genres;
     }
 }

@@ -24,7 +24,7 @@ public class DocumentDTO {
     private UsersDTO userid;
     private Date timeupdate;
     private UsersDTO updaterid;
-
+    private GenresDTO genreid;
     public Integer getDocumentid() {
         return documentid;
     }
@@ -152,5 +152,13 @@ public class DocumentDTO {
 
     public void setUpdaterid(UsersDTO updaterid) {
         this.updaterid = updaterid;
+    }
+
+    public GenresDTO getGenreid() {
+        return genreid;
+    }
+
+    public void setGenreid(GenresDTO genreid) {
+        this.genreid = genreid;
     }
 }

@@ -35,6 +35,9 @@ public class DocumentServiceIMPL implements DocumentService {
     public String documentSavePath;
     @Value("/static/Upload/images/")
     public String imageSavePath;
+    @Value("D:/KnowledgeHub/BackEnd/src/main/resources")
+    public String saveURL;
+
     @Autowired
     private final DocumentRepository documentRepository;
     @Autowired
@@ -53,9 +56,10 @@ public class DocumentServiceIMPL implements DocumentService {
     private final UserRepository userRepository;
     @Autowired
     private final NotificationsRepository notificationsRepository;
+    @Autowired
+    private final GenresRepository genresRepository;
 
-
-    public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository) {
+    public DocumentServiceIMPL(DocumentRepository documentRepository, ModelMapper modelMapper, AuthorRepository authorRepository, PublishersRepository publishersRepository, SuppliersRepository suppliersRepository, CategoryRepository categoryRepository, HistoryRepository historyRepository, UserRepository userRepository, NotificationsRepository notificationsRepository, GenresRepository genresRepository) {
         this.documentRepository = documentRepository;
         this.modelMapper = modelMapper;
         this.authorRepository = authorRepository;
@@ -65,6 +69,7 @@ public class DocumentServiceIMPL implements DocumentService {
         this.historyRepository = historyRepository;
         this.userRepository = userRepository;
         this.notificationsRepository = notificationsRepository;
+        this.genresRepository = genresRepository;
     }
 
 
@@ -194,6 +199,19 @@ public class DocumentServiceIMPL implements DocumentService {
     }
 
     @Override
+    public List<DocumentDTO> getByGenreid(Integer genreid, Pageable pageable) {
+        List<DocumentDTO> results = new ArrayList<>();
+        GenresEntity genres = genresRepository.findByGenreid(genreid);
+        List<DocumentEntity> documentEntities = documentRepository.findByGenreid(genres, pageable);
+        for (DocumentEntity item : documentEntities
+        ) {
+            DocumentDTO dto = modelMapper.map(item, DocumentDTO.class);
+            results.add(dto);
+        }
+        return results;
+    }
+
+    @Override
     public int totalItem() {
         return (int) categoryRepository.count();
     }
@@ -255,6 +273,7 @@ public class DocumentServiceIMPL implements DocumentService {
             AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
             SuppliersEntity suppliers = suppliersRepository.findBySupplierid(documentDTO.getSupplierid().getSupplierid()).orElse(null);
             PublishersEntity publishers = publishersRepository.findByPublisherid(documentDTO.getPublisherid().getPublisherid()).orElse(null);
+            GenresEntity genres = genresRepository.findByGenreid(documentDTO.getGenreid().getGenreid());
             LocalDate currentDate = LocalDate.now();
             Date currentSqlDate = Date.valueOf(currentDate);
             document.setTimeadd(currentSqlDate);
@@ -265,18 +284,17 @@ public class DocumentServiceIMPL implements DocumentService {
             document.setAuthorID(author);
             document.setSupplierid(suppliers);
             document.setPublisherid(publishers);
+            document.setGenreid(genres);
             String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
             String filePath = documentSavePath + filename;
-            Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-            // Chuyển đổi file từ doc sang pdf
-            String pdfFilename = UUID.randomUUID().toString() + ".pdf";
-            String pdfFilePath = documentSavePath + pdfFilename;
-             DocToPdf.convertDocToPdf(file.getInputStream(), pdfFilePath);
-            document.setFileURL(pdfFilePath);
+            String savePath = saveURL + filePath;
+            Files.copy(file.getInputStream(), Paths.get(savePath), StandardCopyOption.REPLACE_EXISTING);
+            document.setFileURL(filePath);
             // Chụp ảnh trang đầu tiên của file PDF
             String thumbnailFilename = UUID.randomUUID().toString() + "_thumbnail.jpg";
             String thumbnailPath = imageSavePath + thumbnailFilename;
-            createPdfThumbnail(filePath, thumbnailPath);
+            String thumbnailSavePath = saveURL + thumbnailPath;
+            createPdfThumbnail(savePath, thumbnailSavePath);
             document.setDocumentthumbnail(thumbnailPath);
             DocumentEntity saveDocument = documentRepository.save(document);
 
@@ -286,7 +304,7 @@ public class DocumentServiceIMPL implements DocumentService {
             historyEntity.setUserid(users);
             historyEntity.setDateupdate(currentSqlDate);
             historyEntity.setDescription(description);
-            historyEntity.setStatus(false);
+                historyEntity.setStatus(false);
             historyRepository.save(historyEntity);
             NotificationsEntity notificationsEntity = new NotificationsEntity();
             String descriptionnotification = users.getUsername() + " Đã thêm thông tin tài liệu có tên " + saveDocument.getDocumentname()
@@ -308,6 +326,7 @@ public class DocumentServiceIMPL implements DocumentService {
             SuppliersEntity suppliers = suppliersRepository.findBySupplierid(documentDTO.getSupplierid().getSupplierid()).orElse(null);
             PublishersEntity publishers = publishersRepository.findByPublisherid(documentDTO.getPublisherid().getPublisherid()).orElse(null);
             AuthorEntity author = authorRepository.findByAuthorid(documentDTO.getAuthorID().getAuthorid()).orElse(null);
+            GenresEntity genres = genresRepository.findByGenreid(documentDTO.getGenreid().getGenreid());
             String fileurl = existingDocument.getFileURL();
             String imagesurl = existingDocument.getDocumentthumbnail();
             Integer Views = existingDocument.getViews();
@@ -318,6 +337,7 @@ public class DocumentServiceIMPL implements DocumentService {
             AuthorDTO authorDTO = modelMapper.map(author, AuthorDTO.class);
             UsersDTO usersDTO = modelMapper.map(existingDocument.getUserid(), UsersDTO.class);
             UsersDTO updaterid = modelMapper.map(users, UsersDTO.class);
+             GenresDTO genresDTO = modelMapper.map(genres, GenresDTO.class);
             documentDTO.setTimeadd(existingDocument.getTimeadd());
             documentDTO.setUserid(usersDTO);
             documentDTO.setUpdaterid(updaterid);
@@ -326,6 +346,7 @@ public class DocumentServiceIMPL implements DocumentService {
             documentDTO.setSupplierid(suppliersDTO);
             documentDTO.setAuthorID(authorDTO);
             documentDTO.setCategoryid(categoryDTO);
+            documentDTO.setGenreid(genresDTO);
             if (!file.isEmpty()) {
                 if (existingDocument.getFileURL() != null && !existingDocument.getFileURL().isEmpty()) {
                     String oldFilePath = imageSavePath + existingDocument.getFileURL();

@@ -35,7 +35,9 @@ public class DocumentEntity {
     @ManyToOne
     @JoinColumn(name = "publisherid")
     private PublishersEntity publisherid;
-
+    @ManyToOne
+    @JoinColumn(name = "genreid")
+    private GenresEntity genreid;
     @Column(name = "documentthumbnail", columnDefinition = "NVARCHAR(MAX)")
     private String documentthumbnail;
     @Column(name = "timeadd")
@@ -176,5 +178,13 @@ public class DocumentEntity {
 
     public void setUpdaterid(UsersEntity updaterid) {
         this.updaterid = updaterid;
+    }
+
+    public GenresEntity getGenreid() {
+        return genreid;
+    }
+
+    public void setGenreid(GenresEntity genreid) {
+        this.genreid = genreid;
     }
 }

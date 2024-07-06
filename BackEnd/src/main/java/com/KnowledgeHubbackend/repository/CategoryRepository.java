@@ -1,6 +1,7 @@
 package com.KnowledgeHubbackend.repository;
 
 import com.KnowledgeHubbackend.entity.CategoryEntity;
+import com.KnowledgeHubbackend.entity.GenresEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,7 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Intege
     Optional<CategoryEntity> findByCategoryid(Integer categoryid);
     @Query("select a from  CategoryEntity a where a.categoryname like %:categoryname%")
     List<CategoryEntity> findByCategoryname(@Param("categoryname") String categoryname, Pageable pageable);
+    List<CategoryEntity> findByGenres(GenresEntity genres, Pageable pageable);
     void deleteByCategoryid(Integer categoryid);
     CategoryEntity saveAndFlush(CategoryEntity categoryEntity);
 }

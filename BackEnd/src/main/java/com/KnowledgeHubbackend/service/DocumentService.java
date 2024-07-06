@@ -22,6 +22,7 @@ public interface DocumentService {
     List<DocumentDTO> getByAuthorID(Integer authorID, Pageable pageable);
     List<DocumentDTO> getByPublisherid(Integer publisherid, Pageable pageable);
     List<DocumentDTO> getBySupplierid(Integer supplierid, Pageable pageable);
+    List<DocumentDTO> getByGenreid(Integer genreid, Pageable pageable);
     int totalItem();
     DocumentDTO getByDocumentid(Integer documentid);
     DocumentDTO getByDocumentidaddhistory(Integer documentid, String userid);

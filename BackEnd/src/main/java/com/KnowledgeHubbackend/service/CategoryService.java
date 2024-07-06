@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CategoryService {
     List<CategoryDTO> getAll(Pageable pageable);
-
+    List<CategoryDTO> getByGenres(Integer genreid,Pageable pageable);
     List<CategoryDTO> getByCategoryname(String categoryname,Pageable pageable);
     int totalItem();
     CategoryDTO getByCategoryid(Integer categoryid);

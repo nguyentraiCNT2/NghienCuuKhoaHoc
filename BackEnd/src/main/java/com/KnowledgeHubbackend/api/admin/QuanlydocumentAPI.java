@@ -56,6 +56,16 @@ public class QuanlydocumentAPI {
         model.addAttribute("getByAuthorid", result);
         return result;
     }
+    @GetMapping("/hien-thi-theo-loai-chung/{id}")
+    public DocumentOutput getByGenreid(@PathVariable Integer id, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model) {
+        DocumentOutput result = new DocumentOutput();
+        result.setPage(page);
+        Pageable pageable = PageRequest.of(page - 1, limit);
+        result.setListResult(documentService.getByGenreid(id, pageable));
+        result.setTotalPage((int) Math.ceil((double) (documentService.totalItem()) / limit));
+        model.addAttribute("getByAuthorid", result);
+        return result;
+    }
 
 
     @GetMapping("/hien-thi-theo-nha-xuat-ban/{publisherid}")
@@ -143,7 +153,7 @@ public class QuanlydocumentAPI {
             , @RequestParam("file") MultipartFile file, @RequestParam("categoryid") Integer categoryid
             , @RequestParam("description") String description, @RequestParam("status") Boolean status
             , @RequestParam("supplierid") Integer supplierid, @RequestParam("authorID") Integer authorID
-            , @RequestParam("publisherid") Integer publisherid, @RequestParam("menuid") Integer menuid
+            , @RequestParam("publisherid") Integer publisherid, @RequestParam("genreid") Integer genreid
             , @RequestParam("userid") String userid) {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryid(categoryid);
@@ -153,6 +163,8 @@ public class QuanlydocumentAPI {
         authorDTO.setAuthorid(authorID);
         PublishersDTO publishersDTO = new PublishersDTO();
         publishersDTO.setPublisherid(publisherid);
+        GenresDTO genresDTO = new GenresDTO();
+        genresDTO.setGenreid(genreid);
         DocumentDTO documentDTO = new DocumentDTO();
         documentDTO.setDocumentname(documentname);
         documentDTO.setCategoryid(categoryDTO);
@@ -163,6 +175,7 @@ public class QuanlydocumentAPI {
         documentDTO.setCountDownload(0);
         documentDTO.setAuthorID(authorDTO);
         documentDTO.setPublisherid(publishersDTO);
+        documentDTO.setGenreid(genresDTO);
         try {
             documentService.createDocument(documentDTO, file, userid);
             return new ResponseEntity<>(  " Thêm mới tài liệu "+documentDTO.getDocumentname()+" thành công", HttpStatus.OK);
@@ -177,7 +190,7 @@ public class QuanlydocumentAPI {
             , @RequestParam("categoryid") Integer categoryid, @RequestParam("description") String description
             , @RequestParam("status") Boolean status, @RequestParam("supplierid") Integer supplierid
             , @RequestParam("authorID") Integer authorID, @RequestParam("publisherid") Integer publisherid
-            , @RequestParam("menuid") Integer menuid, @RequestParam("userid") String userid) {
+            , @RequestParam("genreid") Integer genreid, @RequestParam("userid") String userid) {
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryid(categoryid);
         SuppliersDTO suppliersDTO = new SuppliersDTO();
@@ -186,6 +199,8 @@ public class QuanlydocumentAPI {
         authorDTO.setAuthorid(authorID);
         PublishersDTO publishersDTO = new PublishersDTO();
         publishersDTO.setPublisherid(publisherid);
+        GenresDTO genresDTO = new GenresDTO();
+        genresDTO.setGenreid(genreid);
         DocumentDTO documentDTO = new DocumentDTO();
         documentDTO.setDocumentname(documentname);
         documentDTO.setCategoryid(categoryDTO);
@@ -194,6 +209,7 @@ public class QuanlydocumentAPI {
         documentDTO.setSupplierid(suppliersDTO);
         documentDTO.setAuthorID(authorDTO);
         documentDTO.setPublisherid(publishersDTO);
+        documentDTO.setGenreid(genresDTO);
         try {
             documentDTO.setDocumentid(documentid);
             documentService.updateDocument(documentDTO, file, userid);

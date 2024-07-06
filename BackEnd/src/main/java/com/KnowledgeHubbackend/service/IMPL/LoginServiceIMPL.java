@@ -7,10 +7,7 @@ import com.KnowledgeHubbackend.dto.UsersDTO;
 import com.KnowledgeHubbackend.entity.RolesEntity;
 import com.KnowledgeHubbackend.entity.UserRoleEntity;
 import com.KnowledgeHubbackend.entity.UsersEntity;
-import com.KnowledgeHubbackend.repository.LoginRepository;
-import com.KnowledgeHubbackend.repository.RolesRepository;
-import com.KnowledgeHubbackend.repository.UserRepository;
-import com.KnowledgeHubbackend.repository.UserRoleRepository;
+import com.KnowledgeHubbackend.repository.*;
 import com.KnowledgeHubbackend.service.LoginService;
 import jakarta.persistence.EntityNotFoundException;
 import org.mindrot.jbcrypt.BCrypt;
@@ -32,16 +29,19 @@ public class LoginServiceIMPL implements LoginService {
     private final UserRoleRepository userRoleRepository;
     @Autowired
     private final ModelMapper modelMapper;
+    @Autowired
+    private final UserTokenRepository userTokenRepository;
     private UsersEntity userSignUp;
     private UserRoleEntity userrolesignup;
     private String maxacthuc;
 
-    public LoginServiceIMPL(LoginRepository loginRepository, UserRepository userRepository, RolesRepository rolesRepository, UserRoleRepository userRoleRepository, ModelMapper modelMapper) {
+    public LoginServiceIMPL(LoginRepository loginRepository, UserRepository userRepository, RolesRepository rolesRepository, UserRoleRepository userRoleRepository, ModelMapper modelMapper, UserTokenRepository userTokenRepository) {
         this.loginRepository = loginRepository;
         this.userRepository = userRepository;
         this.rolesRepository = rolesRepository;
         this.userRoleRepository = userRoleRepository;
         this.modelMapper = modelMapper;
+        this.userTokenRepository = userTokenRepository;
     }
 
     @Override // Đăng nhập với tất cả tài khoản
@@ -63,9 +63,11 @@ public class LoginServiceIMPL implements LoginService {
                 ) {
                     if (useritem.getUserid() == item.getUserid().getUserid()
                     ){
+
                         // chuyển dữ liệu từ cơ sở dữ liệu về dữ liệu chuyển về client
                         usersDTO = modelMapper.map(useritem, UsersDTO.class);
                         usersDTO.setPassword(null);
+
                     }
                 }
             }

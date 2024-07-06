@@ -4,6 +4,7 @@ import com.KnowledgeHubbackend.algorithm.RandomId;
 import com.KnowledgeHubbackend.algorithm.TokenUtil;
 import com.KnowledgeHubbackend.dto.UsersDTO;
 import com.KnowledgeHubbackend.service.LoginService;
+import com.KnowledgeHubbackend.service.UserTokenService;
 import jakarta.servlet.http.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -22,9 +23,12 @@ import java.util.Map;
 public class DangNhapAPI {
     @Autowired
     private final LoginService loginService;
+    @Autowired
+    private final UserTokenService userTokenService;
 
-    public DangNhapAPI(LoginService loginService) {
+    public DangNhapAPI(LoginService loginService, UserTokenService userTokenService) {
         this.loginService = loginService;
+        this.userTokenService = userTokenService;
     }
 
     // Phương thức POST được sử dụng để đăng nhập với vai trò quản trị viên
@@ -85,6 +89,7 @@ public class DangNhapAPI {
             headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
             response.put("token", mainToken);
             response.put("user", userDTO);
+            userTokenService.createToken(mainToken, userDTO);
             // Trả về phản hồi thành công (HTTP status code 200) kèm theo các thông tin đã tạo
             return ResponseEntity.ok()
                     .headers(headers)
@@ -120,6 +125,7 @@ public class DangNhapAPI {
             headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
             response.put("token", mainToken);
             response.put("user", userDTO);
+            userTokenService.createToken(mainToken, userDTO);
             // Trả về phản hồi thành công (HTTP status code 200) kèm theo các thông tin đã tạo
             return ResponseEntity.ok()
                     .headers(headers)

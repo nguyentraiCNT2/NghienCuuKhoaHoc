@@ -50,6 +50,16 @@ public class QuanlyloaitailieuAPI {
         result.setTotalPage((int) Math.ceil((double) (categoryService.totalItem()) / limit));
         return result;
     }
+    @GetMapping("/hien-thi-theo-loai-chung/{id}")
+    public CategoryOutPut getByGenres(@PathVariable Integer id, @RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
+        CategoryOutPut result = new CategoryOutPut();
+        result.setPage(page);
+        Pageable pageable =  PageRequest.of(page - 1, limit);
+        result.setListResult(categoryService.getByGenres(id,pageable));
+        result.setTotalPage((int) Math.ceil((double) (categoryService.totalItem()) / limit));
+        return result;
+    }
+
     @GetMapping("/hien-thi-theo-id/{categoryid}")
     public ResponseEntity<?> getByCategoryid(@PathVariable Integer categoryid){
         try {
