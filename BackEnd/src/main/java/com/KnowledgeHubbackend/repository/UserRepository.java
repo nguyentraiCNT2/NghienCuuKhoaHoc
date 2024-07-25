@@ -24,6 +24,7 @@ public interface UserRepository extends JpaRepository<UsersEntity, String> {
     List<UsersEntity> findByPhone(String phone);
     @Query("select a from  UsersEntity a where a.phone like %:phone%")
     List<UsersEntity> findByPhone(@Param("phone") String phone, Pageable pageable);
+
     void deleteByUserid(String userid);
     UsersEntity saveAndFlush(UsersEntity userEntity);
 }

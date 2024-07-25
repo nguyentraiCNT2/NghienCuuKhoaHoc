@@ -157,9 +157,15 @@ public class UserServiceIMPL implements UserService {
     public void updateUser(UsersDTO userDTO) {
         UsersEntity existingUser  = userRepository.findByUserid(userDTO.getUserid())
                 .orElseThrow(() -> new RuntimeException("Khong tim thay du lieu User"));
+        if (userDTO.getPassword().equals(existingUser.getPassword())) {
+
+            userDTO.setPassword(existingUser.getPassword());
+        }
+        else {
+            String hashedPassword = BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt());
+            userDTO.setPassword(hashedPassword);
+        }
         modelMapper.map(userDTO, existingUser);
-        String hashedPassword =   BCrypt.hashpw(existingUser.getPassword(), BCrypt.gensalt());
-        existingUser.setPassword(hashedPassword);
         userRepository.save(existingUser);
     }
 }

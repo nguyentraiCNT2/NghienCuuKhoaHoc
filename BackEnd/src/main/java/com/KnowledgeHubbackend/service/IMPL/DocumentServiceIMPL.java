@@ -234,7 +234,7 @@ public class DocumentServiceIMPL implements DocumentService {
         try {
             DocumentEntity document = documentRepository.findByDocumentid(documentid)
                     .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + documentid));
-            UsersEntity users = userRepository.findByUserid(userid).orElseThrow(null);
+            UsersEntity users = userRepository.findByUserid(userid).orElse(null);
             String description = users.getUsername() + "Đã xem tài liệu " + document.getDocumentname();
             LocalDate currentDate = LocalDate.now();
             Date currentSqlDate = Date.valueOf(currentDate);
@@ -335,6 +335,10 @@ public class DocumentServiceIMPL implements DocumentService {
             SuppliersDTO suppliersDTO = modelMapper.map(suppliers, SuppliersDTO.class);
             PublishersDTO publishersDTO = modelMapper.map(publishers, PublishersDTO.class);
             AuthorDTO authorDTO = modelMapper.map(author, AuthorDTO.class);
+            if (existingDocument.getUserid() == null) {
+                UsersEntity user = userRepository.findByUserid(userid).orElse(null);
+                existingDocument.setUserid(user);
+            }
             UsersDTO usersDTO = modelMapper.map(existingDocument.getUserid(), UsersDTO.class);
             UsersDTO updaterid = modelMapper.map(users, UsersDTO.class);
              GenresDTO genresDTO = modelMapper.map(genres, GenresDTO.class);
@@ -354,17 +358,15 @@ public class DocumentServiceIMPL implements DocumentService {
                 }
                 modelMapper.map(documentDTO, existingDocument);
                 String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-                String filePath = documentSavePath + filename;
-                Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-                // Chuyển đổi file từ doc sang pdf
-                String pdfFilename = UUID.randomUUID().toString() + ".pdf";
-                String pdfFilePath = documentSavePath + pdfFilename;
-                DocToPdf.convertDocToPdf(file.getInputStream(), pdfFilePath);
-                existingDocument.setFileURL(pdfFilePath);
+                String filePath  = documentSavePath + filename;
+                String savePath = saveURL + filePath;
+                Files.copy(file.getInputStream(), Paths.get(savePath), StandardCopyOption.REPLACE_EXISTING);
+                existingDocument.setFileURL(filePath);
                 // Chụp ảnh trang đầu tiên của file PDF
                 String thumbnailFilename = UUID.randomUUID().toString() + "_thumbnail.jpg";
                 String thumbnailPath = imageSavePath + thumbnailFilename;
-                createPdfThumbnail(filePath, thumbnailPath);
+                String thumbnailSavePath = saveURL + thumbnailPath;
+                createPdfThumbnail(savePath, thumbnailSavePath);
                 existingDocument.setDocumentthumbnail(thumbnailPath);
                 existingDocument.setCountDownload(countDown);
                 existingDocument.setViews(Views);

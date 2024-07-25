@@ -45,6 +45,19 @@ public class DocumentUserServiceIMPL implements DocumentUserService {
     }
 
     @Override
+    public List<DocumentUserDTO> getByDocumentid(Integer documentid) {
+        List<DocumentUserDTO> results = new ArrayList<>();
+        DocumentEntity document = documentRepository.findByDocumentid(documentid).orElse(null);
+        List<DocumentUserEntity> documentUserEntities = documentUserRepository.findByDocumentid(document);
+        for (DocumentUserEntity item : documentUserEntities
+        ) {
+            DocumentUserDTO dto = modelMapper.map(item, DocumentUserDTO.class);
+            results.add(dto);
+        }
+        return results;
+    }
+
+    @Override
     public List<DocumentUserDTO> getByDocumentid(Integer documentid, Pageable pageable) {
         List<DocumentUserDTO> results = new ArrayList<>();
         DocumentEntity document = documentRepository.findByDocumentid(documentid).orElse(null);
@@ -72,12 +85,23 @@ public class DocumentUserServiceIMPL implements DocumentUserService {
             for (DocumentUserEntity documentUserEntity : documentUserEntities) {
                 documentUserRepository.delete(documentUserEntity);
             }
-
+            documentEntity.setViews(documentEntity.getViews() + 1);
             // Lưu DocumentUserEntity mới từ DTO
             DocumentUserEntity newDocumentUserEntity = modelMapper.map(dto, DocumentUserEntity.class);
             newDocumentUserEntity.setDocumentid(documentEntity);
             newDocumentUserEntity.setUserid(userEntity);
             documentUserRepository.save(newDocumentUserEntity);
+            documentRepository.save(documentEntity);
+        }
+    }
+
+    @Override
+    public void delete(Integer documentuserid) {
+        if (documentuserid != null) {
+            documentUserRepository.deleteByDocumentuserid(documentuserid);
+        }
+         else {
+            throw new RuntimeException("DocumentUserid is null");
         }
     }
 

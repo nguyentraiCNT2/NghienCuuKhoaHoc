@@ -7,6 +7,7 @@ import com.KnowledgeHubbackend.entity.*;
 import com.KnowledgeHubbackend.repository.DocumentRepository;
 import com.KnowledgeHubbackend.repository.FavoriteListRepository;
 import com.KnowledgeHubbackend.repository.UserRepository;
+import com.KnowledgeHubbackend.repository.UserTokenRepository;
 import com.KnowledgeHubbackend.service.FavoriteListService;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
@@ -28,12 +29,15 @@ public class FavoriteListServiceIMPL implements FavoriteListService {
     private final UserRepository userRepository;
     @Autowired
     private final DocumentRepository documentRepository;
+    @Autowired
+    private final UserTokenRepository   userTokenRepository;
 
-    public FavoriteListServiceIMPL(FavoriteListRepository favoriteListRepository, ModelMapper modelMapper, UserRepository userRepository, DocumentRepository documentRepository) {
+    public FavoriteListServiceIMPL(FavoriteListRepository favoriteListRepository, ModelMapper modelMapper, UserRepository userRepository, DocumentRepository documentRepository, UserTokenRepository userTokenRepository) {
         this.favoriteListRepository = favoriteListRepository;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.documentRepository = documentRepository;
+        this.userTokenRepository = userTokenRepository;
     }
 
     @Override
@@ -89,8 +93,8 @@ public class FavoriteListServiceIMPL implements FavoriteListService {
     @Override
     public List<FavoriteListDTO> getByUserid(String userid, Pageable pageable) {
         List<FavoriteListDTO> results = new ArrayList<>();
-        UsersEntity users = userRepository.findByUserid(userid).orElse(null);
-        List<FavoriteListEntity> favoriteListEntities = favoriteListRepository.findByUserid(users,pageable);
+        List<UserTokenEntity> Listuser = userTokenRepository.findByToken(userid);
+        List<FavoriteListEntity> favoriteListEntities = favoriteListRepository.findByUserid(Listuser.get(0).getUsers(),pageable);
         for (FavoriteListEntity item: favoriteListEntities
         ) {
             FavoriteListDTO dto = modelMapper.map(item,FavoriteListDTO.class);

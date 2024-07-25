@@ -75,6 +75,19 @@ public class NotificationsServiceIMPL implements NotificationsService {
     }
 
     @Override
+    public List<NotificationsDTO> getByDocumentid(Integer documentid) {
+        List<NotificationsDTO> results = new ArrayList<>();
+        DocumentEntity document = documentRepository.findByDocumentid(documentid).orElse(null);
+        List<NotificationsEntity> notificationsEntities = notificationsRepository.findByDocumentid(document);
+        for (NotificationsEntity item : notificationsEntities
+        ) {
+            NotificationsDTO dto = modelMapper.map(item, NotificationsDTO.class);
+            results.add(dto);
+        }
+        return results;
+    }
+
+    @Override
     public void deleteByNotificationid(Integer notificationid) {
         notificationsRepository.deleteByNotificationid(notificationid);
     }

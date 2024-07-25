@@ -13,5 +13,6 @@ import java.util.List;
 public interface HistoryRepository extends JpaRepository<HistoryEntity, Integer> {
     List<HistoryEntity> findByUserid(UsersEntity users, Pageable pageable);
     List<HistoryEntity> findByDocumentid(DocumentEntity document, Pageable pageable);
+    List<HistoryEntity> findByDocumentid(DocumentEntity document);
     void deleteByHistoryid(Integer historyid);
 }

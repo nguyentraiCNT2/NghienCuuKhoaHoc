@@ -1,6 +1,7 @@
 package com.KnowledgeHubbackend.service.IMPL;
 
 import com.KnowledgeHubbackend.dto.CategoryDTO;
+import com.KnowledgeHubbackend.dto.GenresDTO;
 import com.KnowledgeHubbackend.entity.CategoryEntity;
 import com.KnowledgeHubbackend.entity.GenresEntity;
 import com.KnowledgeHubbackend.repository.CategoryRepository;
@@ -103,9 +104,22 @@ public class CategoryServiceIMPL implements CategoryService {
 
     @Override
     public void updateCategory(CategoryDTO categoryDTO) {
-        CategoryEntity existingCategory  = categoryRepository.findByCategoryid(categoryDTO.getCategoryid())
-                .orElseThrow(() -> new RuntimeException("Khong tim thay du lieu User"));
-        modelMapper.map(categoryDTO, existingCategory);
+        // Tìm CategoryEntity hiện có
+        CategoryEntity existingCategory = categoryRepository.findByCategoryid(categoryDTO.getCategoryid())
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy dữ liệu Category"));
+
+        // Tìm GenresEntity hiện có
+        GenresEntity genresEntity = genresRepository.findByGenreid(categoryDTO.getGenres().getGenreid());
+        if (genresEntity == null) {
+            throw new RuntimeException("Không tìm thấy dữ liệu Genres");
+        }
+
+        // Cập nhật các thuộc tính cần thiết, tránh thay đổi genreid
+        existingCategory.setCategoryname(categoryDTO.getCategoryname());
+        existingCategory.setDescription(categoryDTO.getDescription());
+        existingCategory.setGenres(genresEntity); // Chỉ cần thiết lập lại GenresEntity mà không thay đổi genreid
+
+        // Lưu lại CategoryEntity đã được cập nhật
         categoryRepository.save(existingCategory);
     }
 }

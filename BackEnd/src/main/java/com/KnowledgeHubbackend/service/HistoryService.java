@@ -12,6 +12,7 @@ public interface HistoryService {
     List<HistoryDTO> getAll(Pageable pageable);
     List<HistoryDTO> getByUserid(String userid,Pageable pageable);
     List<HistoryDTO> getByDocumentid(Integer documentid, Pageable pageable);
+    List<HistoryDTO> getByDocumentid(Integer documentid);
     void deleteByHistoryid(Integer historyid);
     int totalItem();
 }

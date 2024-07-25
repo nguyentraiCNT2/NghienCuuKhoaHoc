@@ -93,7 +93,7 @@ public class AuthorServiceIMPL implements AuthorService {
     public void updateAuthor(AuthorDTO authorDTO) {
         AuthorEntity existingAuthor  = authorRepository.findByAuthorid(authorDTO.getAuthorid())
                 .orElseThrow(() -> new RuntimeException("Khong tim thay du lieu User"));
-        modelMapper.map(authorRepository, existingAuthor);
+        modelMapper.map(authorDTO, existingAuthor);
         authorRepository.save(existingAuthor);
     }
 }

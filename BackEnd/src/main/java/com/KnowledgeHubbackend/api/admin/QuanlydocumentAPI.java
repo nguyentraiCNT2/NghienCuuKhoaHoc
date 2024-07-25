@@ -3,7 +3,7 @@ package com.KnowledgeHubbackend.api.admin;
 import com.KnowledgeHubbackend.api.output.AuthorOutPut;
 import com.KnowledgeHubbackend.api.output.DocumentOutput;
 import com.KnowledgeHubbackend.dto.*;
-import com.KnowledgeHubbackend.service.DocumentService;
+import com.KnowledgeHubbackend.service.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -14,12 +14,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin/quan-ly-tai-lieu")
 public class QuanlydocumentAPI {
     @Autowired
     private final DocumentService documentService;
-
+    @Autowired
+    private DocumentUserService documentUserService;
+    @Autowired
+    private HistoryService historyService;
+    @Autowired
+    private NotificationsService notificationsService;
+    @Autowired
+    private UserService userService;
     public QuanlydocumentAPI(DocumentService documentService) {
         this.documentService = documentService;
     }
@@ -155,6 +164,9 @@ public class QuanlydocumentAPI {
             , @RequestParam("supplierid") Integer supplierid, @RequestParam("authorID") Integer authorID
             , @RequestParam("publisherid") Integer publisherid, @RequestParam("genreid") Integer genreid
             , @RequestParam("userid") String userid) {
+
+        UsersDTO dto = new UsersDTO();
+        dto.setUserid(userid);
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryid(categoryid);
         SuppliersDTO suppliersDTO = new SuppliersDTO();
@@ -176,6 +188,8 @@ public class QuanlydocumentAPI {
         documentDTO.setAuthorID(authorDTO);
         documentDTO.setPublisherid(publishersDTO);
         documentDTO.setGenreid(genresDTO);
+        documentDTO.setUpdaterid(dto);
+        documentDTO.setUserid(dto);
         try {
             documentService.createDocument(documentDTO, file, userid);
             return new ResponseEntity<>(  " Thêm mới tài liệu "+documentDTO.getDocumentname()+" thành công", HttpStatus.OK);
@@ -191,6 +205,7 @@ public class QuanlydocumentAPI {
             , @RequestParam("status") Boolean status, @RequestParam("supplierid") Integer supplierid
             , @RequestParam("authorID") Integer authorID, @RequestParam("publisherid") Integer publisherid
             , @RequestParam("genreid") Integer genreid, @RequestParam("userid") String userid) {
+
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setCategoryid(categoryid);
         SuppliersDTO suppliersDTO = new SuppliersDTO();
@@ -222,10 +237,33 @@ public class QuanlydocumentAPI {
     }
 
     @Transactional
-    @DeleteMapping("/xoa-thong-tin-tai-lieu/{documentid}")
+        @DeleteMapping("/xoa-thong-tin-tai-lieu/{documentid}")
     public ResponseEntity<String> deleteDocument(@PathVariable Integer documentid) {
         try {
-            documentService.deleteByDocumentid(documentid);
+            List<DocumentUserDTO> listdocumentuser = documentUserService.getByDocumentid(documentid);
+            List<HistoryDTO> listhistory = historyService.getByDocumentid(documentid);
+            List<NotificationsDTO> notificationsDTOList = notificationsService.getByDocumentid(documentid);
+            if (notificationsDTOList.size() > 0){
+                for (NotificationsDTO item: notificationsDTOList){
+                    notificationsService.deleteByNotificationid(item.getNotificationid());
+                }
+
+            }
+            if (listhistory.size() ==0){
+                for (DocumentUserDTO documentUserDTO : listdocumentuser) {
+                    documentUserService.delete(documentUserDTO.getDocumentuserid());
+                }
+                documentService.deleteByDocumentid(documentid);
+            }
+           else {
+               for (HistoryDTO historyDTO : listhistory) {
+                   historyService.deleteByHistoryid(historyDTO.getHistoryid());
+               }
+                for (DocumentUserDTO documentUserDTO : listdocumentuser) {
+                    documentUserService.delete(documentUserDTO.getDocumentuserid());
+                }
+                documentService.deleteByDocumentid(documentid);
+            }
             return new ResponseEntity<>("Xóa thành công", HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

@@ -75,6 +75,19 @@ private final DocumentRepository documentRepository;
     }
 
     @Override
+    public List<HistoryDTO> getByDocumentid(Integer documentid) {
+        List<HistoryDTO> results = new ArrayList<>();
+        DocumentEntity document = documentRepository.findByDocumentid(documentid).orElse(null);
+        List<HistoryEntity> historyEntities = historyRepository.findByDocumentid(document);
+        for (HistoryEntity item : historyEntities
+        ) {
+            HistoryDTO dto = modelMapper.map(item, HistoryDTO.class);
+            results.add(dto);
+        }
+        return results;
+    }
+
+    @Override
     public void deleteByHistoryid(Integer historyid) {
         historyRepository.deleteByHistoryid(historyid);
     }

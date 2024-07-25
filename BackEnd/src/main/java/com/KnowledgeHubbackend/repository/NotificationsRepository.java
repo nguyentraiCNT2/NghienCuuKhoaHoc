@@ -12,5 +12,6 @@ import java.util.List;
 public interface NotificationsRepository extends JpaRepository<NotificationsEntity, Integer> {
     List<NotificationsEntity> findByUserid(UsersEntity users, Pageable pageable);
     List<NotificationsEntity> findByDocumentid(DocumentEntity document, Pageable pageable);
+    List<NotificationsEntity> findByDocumentid(DocumentEntity document);
     void deleteByNotificationid(Integer notificationid);
 }

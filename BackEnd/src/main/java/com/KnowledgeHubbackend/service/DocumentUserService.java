@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface DocumentUserService {
     List<DocumentUserDTO> getByUserid(String token, Pageable pageable);
-
+    List<DocumentUserDTO> getByDocumentid(Integer documentid);
     List<DocumentUserDTO> getByDocumentid(Integer documentid, Pageable pageable);
     void  create(DocumentUserDTO dto, String token);
+    void delete(Integer documentuserid);
     int   totalItem();
 }

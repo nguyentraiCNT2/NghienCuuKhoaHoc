@@ -56,11 +56,11 @@ public class DangNhapAPI {
             headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
             response.put("token", mainToken);
             response.put("user", userDTO);
+            userTokenService.createToken(mainToken, userDTO);
             // Trả về phản hồi thành công (HTTP status code 200) kèm theo các thông tin đã tạo
             return ResponseEntity.ok()
                     .headers(headers)
                     .body(response);
-
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -131,7 +131,7 @@ public class DangNhapAPI {
                     .headers(headers)
                     .body(response);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
@@ -166,7 +166,6 @@ public class DangNhapAPI {
                     .secure(true) // Đánh dấu cookie chỉ được gửi qua kênh an toàn (HTTPS)
                     .path("/")
                     .build();
-
             // Thêm cookie vào header của phản hồi
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
@@ -175,8 +174,27 @@ public class DangNhapAPI {
             return ResponseEntity.ok()
                     .headers(headers)
                     .body(response);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (RuntimeException e) {
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+    @GetMapping("/checkuser")
+    public ResponseEntity<?> checkuser(@RequestParam("username") String username, @RequestParam("email") String email) {
+        try {
+
+           UsersDTO usersDTO =  loginService.CheckUser(username, email);
+            return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PostMapping("/forgotpassword")
+    public ResponseEntity<?> checkuser(@RequestBody UsersDTO userDTO) {
+        try {
+            UsersDTO usersDTO =  loginService.forgotPassword(userDTO);
+            return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }

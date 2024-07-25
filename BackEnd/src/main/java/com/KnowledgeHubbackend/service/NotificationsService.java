@@ -10,6 +10,7 @@ public interface NotificationsService {
     List<NotificationsDTO> getAll(Pageable pageable);
     List<NotificationsDTO> getByUserid(String userid,Pageable pageable);
     List<NotificationsDTO> getByDocumentid(Integer documentid, Pageable pageable);
+    List<NotificationsDTO> getByDocumentid(Integer documentid);
     void deleteByNotificationid(Integer notificationid);
     int totalItem();
 }

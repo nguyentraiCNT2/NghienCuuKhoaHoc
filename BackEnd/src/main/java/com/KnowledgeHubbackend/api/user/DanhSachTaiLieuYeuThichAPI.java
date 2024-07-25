@@ -58,12 +58,12 @@ public class DanhSachTaiLieuYeuThichAPI {
         model.addAttribute("getByMenuname", result);
         return result;
     }
-    @GetMapping("/hien-thi-theo-ma-nguoi-dung/{userid}")
-    public FavoriteListOutPut getByCategoryname(@PathVariable String userid,@RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
+    @GetMapping("/hien-thi-theo-ma-nguoi-dung")
+    public FavoriteListOutPut getByCategoryname(@RequestParam("token") String token,@RequestParam("page") int page, @RequestParam("limit") int limit, Model model){
         FavoriteListOutPut result = new FavoriteListOutPut();
         result.setPage(page);
         Pageable pageable =  PageRequest.of(page - 1, limit);
-        result.setListResult(favoriteListService.getByUserid(userid,pageable));
+        result.setListResult(favoriteListService.getByUserid(token,pageable));
         result.setTotalPage((int) Math.ceil((double) (favoriteListService.totalItem()) / limit));
         model.addAttribute("getByMenuname", result);
         return result;
@@ -87,7 +87,7 @@ public class DanhSachTaiLieuYeuThichAPI {
             }
             return new ResponseEntity<>(dto, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>( null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>( e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     @PutMapping("/chinh-sua-danh-sach-tai-lieu/{favoriteListid}")

@@ -63,7 +63,6 @@ public class LoginServiceIMPL implements LoginService {
                 ) {
                     if (useritem.getUserid() == item.getUserid().getUserid()
                     ){
-
                         // chuyển dữ liệu từ cơ sở dữ liệu về dữ liệu chuyển về client
                         usersDTO = modelMapper.map(useritem, UsersDTO.class);
                         usersDTO.setPassword(null);
@@ -176,7 +175,7 @@ public class LoginServiceIMPL implements LoginService {
             List<UsersEntity> phoneUsersEntities = userRepository.findByPhone(userDTO.getPhone());
             List<UsersEntity> emailUsersEntities = userRepository.findByEmail(userDTO.getEmail());
             List<UsersEntity> usersEntities = userRepository.findByUsername(userDTO.getUsername());
-            if (!usersEntities.isEmpty()){
+            if (usersEntities.size() > 0) {
                 throw new RuntimeException("Tài khoản này đã tồn tại");
             }
             if (emailUsersEntities.size() > 3){
@@ -239,5 +238,71 @@ public class LoginServiceIMPL implements LoginService {
         } catch (Exception e) {
             throw new RuntimeException("An error occurred while fetching data by ID", e);
         }
+    }
+
+    @Override
+    public UsersDTO CheckUser(String username, String email) {
+        try {
+            List<UsersEntity> listUser = userRepository.findByUsername(username);
+            UsersDTO users = new UsersDTO();
+                    for (UsersEntity item: listUser) {
+                        if (item.getEmail().equals(email)) {
+                            users =  modelMapper.map(item, UsersDTO.class);;
+                        }
+                    }
+                return users;
+        } catch (EntityNotFoundException ex) {
+            throw ex;
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while fetching data by ID", e);
+        }
+    }
+
+    @Override
+    public UsersDTO forgotPassword(UsersDTO userDTO) {
+        if (userDTO != null) {
+            List<UsersEntity> usersEntities = userRepository.findByUsername(userDTO.getUsername());
+
+            if (userDTO.getPassword().length() < 6) {
+                throw new RuntimeException("may khau toi thieu la 6 ki tu");
+            } else if (userDTO.getPassword().length() > 20) {
+                throw new RuntimeException("may khau toi da la 20 ki tu");
+            } else if (userDTO.getPassword().contains(" ")) {
+                throw new RuntimeException("may khau khong the chua ky tu trang");
+            } else if (userDTO.getPassword().equals(userDTO.getUsername())) {
+                throw new RuntimeException("may khau khong the chua ten dang nhap");
+            }
+            try {
+                UsersDTO ep = new UsersDTO();
+                String MKC2 = RandomId.generateMKC2(4);
+                maxacthuc = MKC2;
+                String to = userDTO.getEmail();
+                String subject = "Xác thực email đăng ký ";
+                String name = "Xin chào " + userDTO.getUsername();
+                String email = "Có email là: " + userDTO.getEmail();
+                String core = "Đây là mã xác thực của bạn: " + MKC2;
+                String bottom = "Xin cảm ơn!";
+                String body = name + ". \n" + email + ". \n" + core + ". \n" + bottom;
+                Boolean test = SendCodeByEmail.sendEmail(to, subject, body);
+                if (test == true) {
+                    UsersEntity user =  modelMapper.map(userDTO, UsersEntity.class);
+                    String hashedPassword =   BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+                    user.setPassword(hashedPassword);
+                    List<UserRoleEntity> userRoleEntity = userRoleRepository.findByUserid(user);
+                    if (user != null && userRoleEntity!= null) {
+                        userSignUp = user;
+                        userrolesignup = userRoleEntity.get(0);
+                       ep = modelMapper.map(user, UsersDTO.class);
+                        return ep;
+                    } else {
+                        throw new RuntimeException("Không lấy được dữ liệu!");
+                    }
+                }
+            }catch (Exception e){
+                throw new RuntimeException("Email đã tồn tại!");
+            }
+
+        }
+        return null;
     }
 }

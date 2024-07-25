@@ -1,9 +1,6 @@
 package com.KnowledgeHubbackend.service;
 
 import com.KnowledgeHubbackend.dto.UsersDTO;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 
 public interface LoginService {
     UsersDTO loginUser(String username, String password);
@@ -12,4 +9,6 @@ public interface LoginService {
     UsersDTO ComfirmEmail(String code, String userid);
     void SignUp(UsersDTO userDTO);
     UsersDTO getUserById(String token);
+    UsersDTO CheckUser(String username, String email);
+    UsersDTO forgotPassword(UsersDTO dto);
 }

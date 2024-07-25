@@ -37,11 +37,18 @@ public class UserTokenServiceIMPL implements UserTokenService {
             UsersEntity user = userRepository.findByUserid(dto.getUserid())
                     .orElseThrow(() -> new EntityNotFoundException("Data not found with ID: " + dto.getUserid()));
             List<UserTokenEntity> usertokenList = userTokenRepository.findByUsers(user);
+            if (usertokenList.size() > 0) {
+                UserTokenEntity userTokenEntity = usertokenList.get(0);
+                userTokenEntity.setUsers(user);
+                userTokenEntity.setToken(token);
+                userTokenRepository.save(userTokenEntity);
+            }else {
+                UserTokenEntity userTokenEntity = new UserTokenEntity();
+                userTokenEntity.setUsers(user);
+                userTokenEntity.setToken(token);
+                userTokenRepository.save(userTokenEntity);
+            }
 
-            UserTokenEntity userTokenEntity = usertokenList.get(0);
-            userTokenEntity.setUsers(user);
-            userTokenEntity.setToken(token);
-            userTokenRepository.save(userTokenEntity);
         }
     }
 

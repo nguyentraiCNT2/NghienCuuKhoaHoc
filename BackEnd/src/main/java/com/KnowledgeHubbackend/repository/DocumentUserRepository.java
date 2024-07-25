@@ -16,5 +16,6 @@ public interface DocumentUserRepository extends JpaRepository<DocumentUserEntity
     List<DocumentUserEntity> findByUseridAndDocumentid(UsersEntity userid,DocumentEntity documentid);
     void deleteByDocumentidAndUserid(DocumentEntity documentid, UsersEntity userid);
     void deleteByDocumentuserid(Integer documentuserid);
+    List<DocumentUserEntity> findByDocumentid(DocumentEntity documentid);
 
 }
